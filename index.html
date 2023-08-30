@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="data.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -16,22 +17,26 @@
             display: flex;
             justify-content: center; /* Center-align menu items */
             align-items: center;
-            padding: 20px;
-            background-color: #333;
+            padding: 10px;
+            background-color: royalblue;
             color: white;
         }
 
         /* Style for menu items */
         .menu-item {
             cursor: pointer;
-            padding: 10px;
+            padding: 20px;
+        }
+
+        .menu-item-a {
+           color: white;
         }
 
         /* Style for the video grid container */
         .video-grid {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 40px;
             padding: 20px;
             overflow: hidden;
         }
@@ -154,14 +159,19 @@
         }
 
     </style>
-    <title>Dynamic Video Grid Webpage</title>
+    <title>Nitesh Parmar[Sr.Unity3D Game Developer]</title>
 </head>
 <body>
     <div class="menu">
-        <div class="menu-item">All</div>
-        <div class="menu-item">Multiplayer</div>
-        <div class="menu-item">Hypercasual</div>
-        <div class="menu-item">Slot</div>
+        <div class="menu-item"><a href="#" class="menu-item-a">All</a></div>
+        <div class="menu-item"><a href="#" class="menu-item-a">Multiplayer</a></div>
+        <div class="menu-item"><a href="#" class="menu-item-a">AR</a></div>
+        <div class="menu-item"><a href="#" class="menu-item-a">VR</a></div>
+        <div class="menu-item"><a href="#" class="menu-item-a">Slot</a></div>
+        <div class="menu-item"><a href="#" class="menu-item-a">Hypercasual</a></div>
+        <div class="menu-item"><a href="#" class="menu-item-a">Casual</a></div>
+        <div class="menu-item"><a href="#" class="menu-item-a">Other</a></div>
+        
     </div>
 
     <div class="video-grid" id="videoGrid">
@@ -174,32 +184,6 @@
     </div>
 
     <script>
-        const videoData = [
-            {
-                url: "https://www.youtube.com/embed/VIDEO_ID_1",
-                name: "Video Name 1",
-                category: "Multiplayer",
-                description: "Description for Video 1 that is more than two lines. This is a longer description to demonstrate the.Description for Video 1 that is more than two lines. This is a longer description to demonstrate the.",
-                androidLink: "ANDROID_APP_STORE_LINK_1",
-                iosLink: "IOS_APP_STORE_LINK_1"
-            },
-            {
-                url: "https://www.youtube.com/embed/VIDEO_ID_2",
-                name: "Video Name 2",
-                category: "Hypercasual",
-                description: "Short description for Video 2.",
-                androidLink: "ANDROID_APP_STORE_LINK_2",
-                iosLink: "IOS_APP_STORE_LINK_2"
-            },
-            {
-                url: "https://www.youtube.com/embed/VIDEO_ID_3",
-                name: "Video Name 3",
-                category: "Slot",
-                description: "Description for Video 3.",
-                androidLink: "ANDROID_APP_STORE_LINK_3",
-                iosLink: "IOS_APP_STORE_LINK_3"
-            }
-        ];
 
         const videosPerRow = 4;
         const numRows = Math.ceil(videoData.length / videosPerRow);
