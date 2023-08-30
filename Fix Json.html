@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Area Copy-Paste</title>
+  <script>
+    function copyText() {
+      var textarea1 = document.getElementById("textarea1");
+      var textarea2 = document.getElementById("textarea2");
+      textarea2.value = textarea1.value.replace('\"category\"', 'category').replace('\"name\"', 'name').replace('\"url\"', 'url').replace('\"description\"', 'description').replace('\"androidLink\"', 'androidLink').replace('\"iosLink\"', 'iosLink').replace(/\\\//g, "/");
+    }
+  </script>
+</head>
+<body>
+  <h1>Text Area Copy-Paste</h1>
+  
+  <label for="textarea1">Text Area 1:</label>
+  <br>
+  <textarea id="textarea1" rows="4" cols="50"></textarea>
+  
+  <br><br>
+  
+  <label for="textarea2">Text Area 2:</label>
+  <br>
+  <textarea id="textarea2" rows="4" cols="50"></textarea>
+  
+  <br><br>
+  
+  <button onclick="copyText()">Copy Text</button>
+</body>
+</html>

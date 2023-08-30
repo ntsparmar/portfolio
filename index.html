@@ -167,7 +167,7 @@
         <div class="menu-item"><a href="#" class="menu-item-a">Multiplayer</a></div>
         <div class="menu-item"><a href="#" class="menu-item-a">AR</a></div>
         <div class="menu-item"><a href="#" class="menu-item-a">VR</a></div>
-        <div class="menu-item"><a href="#" class="menu-item-a">Slot</a></div>
+        <div class="menu-item"><a href="#" class="menu-item-a">Casino</a></div>
         <div class="menu-item"><a href="#" class="menu-item-a">Hypercasual</a></div>
         <div class="menu-item"><a href="#" class="menu-item-a">Casual</a></div>
         <div class="menu-item"><a href="#" class="menu-item-a">Other</a></div>
@@ -185,7 +185,7 @@
 
     <script>
 
-        const videosPerRow = 4;
+        const videosPerRow = 5;
         const numRows = Math.ceil(videoData.length / videosPerRow);
         const videoGrid = document.getElementById("videoGrid");
         let index=0;
@@ -217,32 +217,38 @@
                 const videoDescription = document.createElement("div");
                 videoDescription.className = "video-description";
                 
-                var str=videoDataObj.description.substring(0,120);
-                var lastIndex = str.lastIndexOf(" ");
-                videoDescription.textContent = videoDataObj.description.substring(0,lastIndex);
+                if(videoDataObj.description!="" && videoDataObj.description!=null){
+                    var str=videoDataObj.description.substring(0,120);
+                    var lastIndex = str.lastIndexOf(" ");
+                    videoDescription.textContent = videoDataObj.description.substring(0,lastIndex);
+                }else{
+
+                    videoDescription.textContent = "";
+                }
 
                
                 
 
                 const appLinks = document.createElement("div");
                 appLinks.className = "app-links";
-
-                const androidLink = document.createElement("a");
-                androidLink.href = videoDataObj.androidLink;
-                androidLink.textContent = "Android";
-
-                const iosLink = document.createElement("a");
-                iosLink.href = videoDataObj.iosLink;
-                iosLink.textContent = "iOS";
-
-                appLinks.appendChild(androidLink);
-                appLinks.appendChild(iosLink);
+                if(videoDataObj.androidLink!="" && videoDataObj.androidLink!=null){
+                    const androidLink = document.createElement("a");
+                    androidLink.href = videoDataObj.androidLink;
+                    androidLink.textContent = "Android";
+                    appLinks.appendChild(androidLink);
+                }
+                if(videoDataObj.iosLink!="" && videoDataObj.iosLink!=null){
+                    const iosLink = document.createElement("a");
+                    iosLink.href = videoDataObj.iosLink;
+                    iosLink.textContent = "iOS";
+                    appLinks.appendChild(iosLink);
+                }
 
                 videoDiv.appendChild(videoIframe);
                 videoDiv.appendChild(videoDetails);
                 videoDiv.appendChild(appLinks);
                 videoDiv.appendChild(videoDescription);
-                 if(videoDataObj.description.length>150){
+                 if(videoDataObj.description!=null && videoDataObj.description.length>150){
                     const readMore = document.createElement("a");
                     readMore.className = "read-more-link";
                     readMore.name=""+index;
