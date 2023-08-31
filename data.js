@@ -4,7 +4,7 @@
   category: "Multiplayer",
   name: "Fans of Soccer: Online Football Disc Challenge",
   url: "https://www.youtube.com/embed/hl0tz3163vQ",
-  description: "null",
+  description: "We can add image as a link and other HTML elements as a link. A link is a connection from one Web page to another web page.We can add image as a link and other HTML elements as a link. A link is a connection from one Web page to another web page.",
   androidLink: "https://play.google.com/store/apps/details?id=com.omentertainment.soccerfans",
   iosLink: "null"
  },
