@@ -6,7 +6,7 @@
     function copyText() {
       var textarea1 = document.getElementById("textarea1");
       var textarea2 = document.getElementById("textarea2");
-      textarea2.value = textarea1.value.replace('\"category\"', 'category').replace('\"name\"', 'name').replace('\"url\"', 'url').replace('\"description\"', 'description').replace('\"androidLink\"', 'androidLink').replace('\"iosLink\"', 'iosLink').replace(/\\\//g, "/");
+      textarea2.value = textarea1.value.replace('\"category\"', 'category').replace('\"name\"', 'name').replace('\"url\"', 'url').replace('\"description\"', 'description').replace('\"androidLink\"', 'androidLink').replace('\"iosLink\"', 'iosLink').replace(/\\\//g, "/").replace('\"tag\"', 'tag');
     }
   </script>
 </head>

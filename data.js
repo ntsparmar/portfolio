@@ -1,15 +1,17 @@
 
         var videoData =[
  {
-  category: "Multiplayer,3D",
+  category: "Multiplayer",
+  tag: "#Multiplayer,#3D",
   name: "Fans of Soccer: Online Football Disc Challenge",
   url: "https://www.youtube.com/embed/hl0tz3163vQ",
-  description: "niteshparmar",
+  description: "null",
   androidLink: "https://play.google.com/store/apps/details?id=com.omentertainment.soccerfans",
   iosLink: "null"
  },
  {
-  "category": "Multiplayer,2D",
+  "category": "Multiplayer",
+  "tag": "#Multiplayer,#2D",
   "name": "Qikplay - Win Real Gift Cards",
   "url": "https://www.youtube.com/embed/yabdeTjGhek",
   "description": "null",
@@ -17,7 +19,8 @@
   "iosLink": "null"
  },
  {
-  "category": "Multiplayer,3D",
+  "category": "Multiplayer",
+  "tag": "#Multiplayer,#3D",
   "name": "ISTO3D-WiFi Multiplayer Game",
   "url": "https://www.youtube.com/embed/H7t18n0Rl6U",
   "description": "null",
@@ -26,6 +29,7 @@
  },
  {
   "category": "Multiplayer",
+  "tag": "#Multiplayer,#2D",
   "name": "Fish Game",
   "url": "https://www.youtube.com/embed/Oh1gzRQcsuY",
   "description": "null",
@@ -34,6 +38,7 @@
  },
  {
   "category": "AR",
+  "tag": "#AR,#3D",
   "name": "Modi ki Note - Modi Rocks",
   "url": "https://www.youtube.com/embed/tvcmQ9ttPHc",
   "description": "null",
@@ -42,6 +47,7 @@
  },
  {
   "category": "AR",
+  "tag": "#AR,#3D",
   "name": "AR Furniture Placing",
   "url": "https://www.youtube.com/embed/zQyiA3mE6KY",
   "description": "null",
@@ -50,6 +56,7 @@
  },
  {
   "category": "AR",
+  "tag": "#AR,#3D",
   "name": "Cube Throw Game",
   "url": "https://www.youtube.com/embed/SjSTNkY-P78",
   "description": "null",
@@ -58,6 +65,7 @@
  },
  {
   "category": "AR",
+  "tag": "#AR,#3D",
   "name": "AR Vehicle Classification",
   "url": "https://www.youtube.com/embed/lN1BTqv5haU",
   "description": "null",
@@ -66,6 +74,7 @@
  },
  {
   "category": "VR",
+  "tag": "#VR,#3D",
   "name": "VR - Home Interior",
   "url": "https://www.youtube.com/embed/efqDzqq10F4",
   "description": "null",
@@ -74,6 +83,7 @@
  },
  {
   "category": "VR",
+  "tag": "#VR,#3D",
   "name": "The Bug Butcher",
   "url": "https://www.youtube.com/embed/FVrF3efVAVM",
   "description": "null",
@@ -82,6 +92,7 @@
  },
  {
   "category": "casino",
+  "tag": "#casino,#2D",
   "name": "Raptor-Firelink slot",
   "url": "https://www.youtube.com/embed/G5pBg2vddzo",
   "description": "null",
@@ -90,6 +101,7 @@
  },
  {
   "category": "casino",
+  "tag": "#casino,#2D",
   "name": "Cosmoslot-Slot,Keno,Fish",
   "url": "https://www.youtube.com/embed/8D8YgmX7jjA",
   "description": "null",
@@ -98,6 +110,7 @@
  },
  {
   "category": "casino",
+  "tag": "#casino,#2D",
   "name": "BoomWins-Slot,Keno,Fish",
   "url": "https://www.youtube.com/embed/NeunV8q78Tk",
   "description": "null",
@@ -106,6 +119,7 @@
  },
  {
   "category": "casino",
+  "tag": "#casino,#2D",
   "name": "Cascade Slot",
   "url": "https://www.youtube.com/embed/bcQnWN162F4",
   "description": "null",
@@ -114,6 +128,7 @@
  },
  {
   "category": "casino",
+  "tag": "#casino,#2D",
   "name": "Atlantis-Firelink Slot",
   "url": "https://www.youtube.com/embed/xKIC9XQpIis",
   "description": "null",
@@ -122,6 +137,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Maggots Fight",
   "url": "https://www.youtube.com/embed/Lvf_95wUm8o",
   "description": "null",
@@ -130,6 +146,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Oil Searcher",
   "url": "https://www.youtube.com/embed/lp00xddJ2as",
   "description": "null",
@@ -138,6 +155,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Pandora Box",
   "url": "https://www.youtube.com/embed/lNOO9BWERLI",
   "description": "null",
@@ -146,6 +164,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Monster Land",
   "url": "https://www.youtube.com/embed/x7V9x7FC2J8",
   "description": "null",
@@ -154,6 +173,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Kaiju Fight",
   "url": "https://www.youtube.com/embed/6PblH2-3zb0",
   "description": "null",
@@ -162,6 +182,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "KickEm",
   "url": "https://www.youtube.com/embed/LGgkUQCjKAc",
   "description": "null",
@@ -170,6 +191,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Mission Possible",
   "url": "https://www.youtube.com/embed/ESpBEwi_3eQ",
   "description": "null",
@@ -178,6 +200,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Crowd Painter",
   "url": "https://www.youtube.com/embed/LhSM2yHm-EM",
   "description": "null",
@@ -186,6 +209,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Hyper Tailor",
   "url": "https://www.youtube.com/embed/-Z60EjsRA20",
   "description": "null",
@@ -194,6 +218,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Reverse Painting",
   "url": "https://www.youtube.com/embed/bQQGwju3-nQ",
   "description": "null",
@@ -202,6 +227,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Farmio",
   "url": "https://www.youtube.com/embed/w1JXdB9eGMg",
   "description": "null",
@@ -210,6 +236,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Stop the train",
   "url": "https://www.youtube.com/embed/gXVshQhQieU",
   "description": "null",
@@ -218,6 +245,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Cheerleader tower",
   "url": "https://www.youtube.com/embed/OOgwpp-YF7c",
   "description": "null",
@@ -226,6 +254,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Erase story",
   "url": "https://www.youtube.com/embed/CaAbiW_CA1E",
   "description": "null",
@@ -234,6 +263,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Shortcut Relay",
   "url": "https://www.youtube.com/embed/BggkkSVJPyA",
   "description": "null",
@@ -242,6 +272,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Quicktestfingure",
   "url": "https://www.youtube.com/embed/V85j3dMAl0M",
   "description": "null",
@@ -250,6 +281,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Epic Fall-",
   "url": "https://www.youtube.com/embed/fQRElQohpt4",
   "description": "null",
@@ -258,6 +290,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Turbo man",
   "url": "https://www.youtube.com/embed/st1mfPCNqrg",
   "description": "null",
@@ -266,6 +299,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Walk Master3d",
   "url": "https://www.youtube.com/embed/u_K_w5P-4E0",
   "description": "null",
@@ -274,6 +308,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Drawmbush",
   "url": "https://www.youtube.com/embed/lKEhyPsljiY",
   "description": "null",
@@ -282,6 +317,7 @@
  },
  {
   "category": "Hypercasual",
+  "tag": "#Hypercasual,#3D",
   "name": "Magic Monsters 3D",
   "url": "https://www.youtube.com/embed/x7V9x7FC2J8",
   "description": "null",
@@ -290,6 +326,7 @@
  },
  {
   "category": "Casual",
+  "tag": "#Casual,#2D",
   "name": "MOWGLI JUMP - JUNGLE BOOK GAME",
   "url": "null",
   "description": "null",
@@ -298,6 +335,7 @@
  },
  {
   "category": "Casual",
+  "tag": "#Casual,#2D",
   "name": "Super hexa fit",
   "url": "null",
   "description": "null",
@@ -306,6 +344,7 @@
  },
  {
   "category": "Casual",
+  "tag": "#Casual,#2D",
   "name": "Dont vapid up",
   "url": "https://www.youtube.com/embed/y4h5Njnmz08",
   "description": "null",
@@ -314,6 +353,7 @@
  },
  {
   "category": "Casual",
+  "tag": "#Casual,#2D",
   "name": "Flappy magic bird",
   "url": "null",
   "description": "null",
@@ -322,6 +362,7 @@
  },
  {
   "category": "Casual",
+  "tag": "#Casual,#2D",
   "name": "SANTA'S SLAY™ - CHRISTMAS GAME",
   "url": "null",
   "description": "null",
@@ -330,6 +371,7 @@
  },
  {
   "category": "Other",
+  "tag": "#Other,#3D",
   "name": "Interactive car configuration Product Visualization 360",
   "url": "https://www.youtube.com/embed/3GcaScFV37k",
   "description": "null",
@@ -338,6 +380,7 @@
  },
  {
   "category": "Other",
+  "tag": "#Other,#3D",
   "name": "Multiplayer City Walk Through",
   "url": "https://www.youtube.com/embed/up-P_01UtCs",
   "description": "null",
@@ -346,6 +389,7 @@
  },
  {
   "category": "Other",
+  "tag": "#Other,#2D",
   "name": "Rashi Bazar",
   "url": "https://www.youtube.com/embed/L4Pou3ALas8",
   "description": "null",
@@ -354,14 +398,16 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Narcos-Bonus Game",
-  "url": "https://www.youtube.com/embed/L4Pou3ALas8",
+  "url": "https://www.youtube.com/embed/HFOYOc5veRQ",
   "description": "null",
   "androidLink": "null",
   "iosLink": "null"
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Raptor-Bonus Game",
   "url": "https://www.youtube.com/embed/2foduOj_Plw",
   "description": "null",
@@ -370,6 +416,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Money Train-Bonus Game",
   "url": "https://www.youtube.com/embed/3NQOc5CO-S8",
   "description": "null",
@@ -378,6 +425,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Blood Sucker-Bonus Game",
   "url": "https://www.youtube.com/embed/n-XI39BK94k",
   "description": "null",
@@ -386,6 +434,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Big Bamboo-Bonus Game",
   "url": "https://www.youtube.com/embed/6-AcuEHlGjs",
   "description": "null",
@@ -394,6 +443,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Break Da Bank-Bonus Game",
   "url": "https://www.youtube.com/embed/Z9v7warrgHY",
   "description": "null",
@@ -402,6 +452,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Fortune Wheel-Bonus Game",
   "url": "https://www.youtube.com/embed/Mux7AHeYsEU",
   "description": "null",
@@ -410,6 +461,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Great Circus-Bonus Game",
   "url": "https://www.youtube.com/embed/PH76ebN9CCw",
   "description": "null",
@@ -418,6 +470,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Bahubali-Boar Game",
   "url": "https://www.youtube.com/embed/2pmZlP_tkMY",
   "description": "null",
@@ -426,6 +479,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Jammin Jars-Bonus Game",
   "url": "https://www.youtube.com/embed/a1eUWyEmUEw",
   "description": "null",
@@ -434,6 +488,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Machu Pichu-Bonus Game",
   "url": "https://www.youtube.com/embed/7CddeintsNA",
   "description": "null",
@@ -442,6 +497,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Lucky Gems-Bonus Game",
   "url": "https://www.youtube.com/embed/DTfO8eUNEDY",
   "description": "null",
@@ -450,6 +506,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Party Night-Bonus Game",
   "url": "https://www.youtube.com/embed/81mC5wFZgkw",
   "description": "null",
@@ -458,6 +515,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Spin War-Bonus Game",
   "url": "https://www.youtube.com/embed/GxDXHQzaBPU",
   "description": "null",
@@ -466,6 +524,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "Wild Sworm-Bonus Game",
   "url": "https://www.youtube.com/embed/vcRgyKSSy2I",
   "description": "null",
@@ -474,6 +533,7 @@
  },
  {
   "category": "Small Game",
+  "tag": "#smallGame,#2D",
   "name": "XHX-Bonus Game",
   "url": "https://www.youtube.com/embed/qLvMsihAdeA",
   "description": "null",
