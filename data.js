@@ -5,7 +5,7 @@
   tag: "#Multiplayer,#3D",
   name: "Fans of Soccer: Online Football Disc Challenge",
   url: "https://www.youtube.com/embed/hl0tz3163vQ",
-  description: "null",
+  description: "Dive into an immersive aquatic adventure with our Fish Games, offering real-time multiplayer action powered by the Mirror and GameLift SDKs. Your underwater journey is armed with an arsenal of unique guns, including the precision of the Single Gun, the firepower of the Double Gun, the incendiary effects of the Fire Gun, and the precision-focused Laser Gun.\r\n\r\nBut that\'s not all \u2013 you\'ll have Freezing and Summon powers at your disposal, adding strategic depth to your gameplay. Freeze your foes in their tracks or summon reinforcements to aid your quest for underwater supremacy.\r\n\r\nPrepare to encounter 13 distinct types of fish, each with their own unique kill values. Some are elusive and challenging to catch, while others are bountiful treasures waiting to be claimed. Strategize and choose your weapons wisely to maximize your rewards.\r\n\r\nWhether you\'re a high-stakes player or just looking for some casual fun, our game offers the flexibility to play with real money for that authentic casino thrill or use virtual currency to refine your skills and explore the depths of the underwater world risk-free.\r\n\r\nDive in, team up with friends or challenge players from around the globe, and embark on an epic underwater adventure in Fish Games. Let the hunt begin!",
   androidLink: "https://play.google.com/store/apps/details?id=com.omentertainment.soccerfans",
   iosLink: "null"
  },
@@ -293,7 +293,7 @@
   "tag": "#Hypercasual,#3D",
   "name": "Turbo man",
   "url": "https://www.youtube.com/embed/st1mfPCNqrg",
-  "description": "null",
+  "description": "Dive into an immersive aquatic adventure with our Fish Games, offering real-time multiplayer action powered by the Mirror and GameLift SDKs. Your underwater journey is armed with an arsenal of unique guns, including the precision of the Single Gun, the firepower of the Double Gun, the incendiary effects of the Fire Gun, and the precision-focused Laser Gun.\n\nBut that\'s not all – you\'ll have Freezing and Summon powers at your disposal, adding strategic depth to your gameplay. Freeze your foes in their tracks or summon reinforcements to aid your quest for underwater supremacy.\n\nPrepare to encounter 13 distinct types of fish, each with their own unique kill values. Some are elusive and challenging to catch, while others are bountiful treasures waiting to be claimed. Strategize and choose your weapons wisely to maximize your rewards.\n\nWhether you\'re a high-stakes player or just looking for some casual fun, our game offers the flexibility to play with real money for that authentic casino thrill or use virtual currency to refine your skills and explore the depths of the underwater world risk-free.\n\nDive in, team up with friends or challenge players from around the globe, and embark on an epic underwater adventure in Fish Games. Let the hunt begin!",
   "androidLink": "null",
   "iosLink": "null"
  },
