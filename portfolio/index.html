@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Nitesh Parmar</title>
@@ -95,40 +96,18 @@
   }
   </style>
 
-  <script src="updated_data.js"></script>
-  <script>
 
+  <script type="text/javascript">
+   window.onload = function() {
+  cretePortfolio();
+  };
+    cretePortfolio();
+    function  cretePortfolio() {
     for (let i = 0; i < videoData.length; i++) {
         const videoDataObj = videoData[i];
         console.log(videoDataObj);
     }
-    // JavaScript to generate blocks at load time
-    document.addEventListener('DOMContentLoaded', () => {
-      const portfolio = document.getElementById('portfolio');
-
-      for (let i = 1; i <= 10; i++) {
-        const divBlock = `
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books${i}">
-            <div class="portfolio-content h-100">
-              <img src="assets/img/portfolio/app-${1}.jpg" class="img-fluid" alt="App ${i}">
-              <div class="portfolio-info">
-                <h4>App ${i}</h4>
-                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                <a href="assets/img/portfolio/app-${1}.jpg" title="App ${i}" data-gallery="portfolio-gallery-app" class="glightbox preview-link">
-                  <i class="bi bi-zoom-in"></i>
-                </a>
-                <a href="portfolio-details.html" title="More Details" class="details-link">
-                  <i class="bi bi-link-45deg"></i>
-                </a>
-                <a href="portfolio-details.html" title="More Details1" class="details-link">asd</a>
-              </div>
-            </div>
-          </div>
-        `;
-        // Append the new div to the portfolio container
-        //portfolio.innerHTML += divBlock;
-      }
-    });
+    }
   </script>
   
 
@@ -941,7 +920,8 @@ gameplay mechanics and captivating visuals.</p>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
+   <!-- data file -->
+  <script src="data.js"></script>
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
