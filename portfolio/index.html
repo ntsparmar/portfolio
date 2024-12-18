@@ -41,10 +41,67 @@
       padding: 1;
       font-size: 14px; /* Smaller font size */
     }
+
+  .youtube-icon {
+    color: orangered;
+    transition: color 0.3s ease;
+  }
+  .youtube-icon:hover {
+    color: darkred; /* Changes the color on hover */
+  }
+
+  .android-icon {
+    color: lightgreen;
+    transition: color 0.3s ease;
+  }
+  .android-icon:hover {
+    color: darkgreen; /* Changes the color on hover */
+  }
+
+   .ios-icon {
+    color: whitesmoke;
+    transition: color 0.3s ease;
+  }
+  .ios-icon:hover {
+    color: grey; /* Changes the color on hover */
+  }
+
+  .web-icon {
+    color: yellow;
+    transition: color 0.3s ease;
+  }
+  .web-icon:hover {
+    color: yellowgreen; /* Changes the color on hover */
+  }
+
+  .portfolio-content-info{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+    text-align: center;
+  }
+  .portfolio-buttons{
+    display: flex;
+     justify-content: center;
+      align-items: center; 
+      gap: 10px;
+  }
+  .portfolio-headers{
+    position: absolute;
+     top: 5px; 
+     left: 5px; 
+     margin: 0;
+  }
   </style>
 
 
   <script>
+
+    for (let i = 0; i < videoData.length; i++) {
+        const videoDataObj = videoData[i];
+        console.log(videoDataObj);
+    }
     // JavaScript to generate blocks at load time
     document.addEventListener('DOMContentLoaded', () => {
       const portfolio = document.getElementById('portfolio');
@@ -73,6 +130,7 @@
       }
     });
   </script>
+  <script src="updated_data.js"></script>
 
 </head>
 
@@ -556,16 +614,17 @@ gameplay mechanics and captivating visuals.</p>
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200" id="portfolio">
               <!-- portfolio generated here-->
 
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app" style="">
+              <div class="portfolio-content h-100" style="position: relative; border-radius: 5px; overflow: hidden; box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.8);">
                 <img src="https://img.youtube.com/vi/xKIC9XQpIis/maxresdefault.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Atlantis-Firelink Slot</h4>
-                    <h3>
-                        <a href="https://www.youtube.com/embed/xKIC9XQpIis" title="Atlantis-Firelink Slot" data-gallery="portfolio-gallery-app" class="glightbox link"> <i class="bi bi-youtube" style="background-color: darkred;"></i> </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.example.app${i}" target="_blank" title="Download on Android"><i class="bi bi-android2"></i></a>
-                        <a href="https://apps.apple.com/app/id${1000000 + i}" target="_blank" title="Download on iOS"><i class="bi bi-apple"></i></a>
-                    </h3>
+                <div class="portfolio-info portfolio-content-info">
+                  <h4 class="portfolio-headers">Atlantis-Firelink Slot</h4>
+                    <h1 class="portfolio-buttons">
+                        <a href="https://www.youtube.com/embed/xKIC9XQpIis" title="Atlantis-Firelink Slot" data-gallery="portfolio-gallery-app" class="glightbox link"> <i class="bi bi-youtube youtube-icon"></i> </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.example.app${i}" target="_blank" title="Download on Android"><i class="bi bi-android2 android-icon"></i></a>
+                        <a href="https://apps.apple.com/app/id${1000000 + i}" target="_blank" title="Download on iOS"><i class="bi bi-apple ios-icon"></i></a>
+                        <a href="https://apps.apple.com/app/id${1000000 + i}" target="_blank" title="Download on iOS"><i class="bi bi-link-45deg web-icon"></i></a>
+                    </h1>
                   <p>Games connected to the Fire Link...<a href="portfolio-details.html" title="App 1 Video"> More Details </a></p>
                 </div>
               </div>
