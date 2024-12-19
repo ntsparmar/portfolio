@@ -1,4 +1,4 @@
-var videoData =[
+const videoData =[
  {
   "category": "Multiplayer",
   "tag": "#Multiplayer,#3D,#API",

@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Nitesh Parmar</title>
@@ -95,22 +94,6 @@
      margin: 0;
   }
   </style>
-
-
-  <script type="text/javascript">
-   window.onload = function() {
-  cretePortfolio();
-  };
-    cretePortfolio();
-    function  cretePortfolio() {
-    for (let i = 0; i < videoData.length; i++) {
-        const videoDataObj = videoData[i];
-        console.log(videoDataObj);
-    }
-    }
-  </script>
-  
-
 </head>
 
 <body class="index-page">
@@ -569,7 +552,8 @@ gameplay mechanics and captivating visuals.</p>
     </section><!-- /Resume Section -->
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section light-background">
+
+<section id="portfolio" class="portfolio section light-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -581,33 +565,16 @@ gameplay mechanics and captivating visuals.</p>
 
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100" id="portfolio-filters">
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="200" id="portfolio-filters">
+
+            <!-- filter generated here -->
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Product</li>
-            <li data-filter=".filter-branding">Branding</li>
-            <li data-filter=".filter-books">Books</li>
-            <li data-filter=".filter-books1">Books1</li>
+
           </ul><!-- End Portfolio Filters -->
 
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200" id="portfolio">
-              <!-- portfolio generated here-->
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="400" id="portfolio_content">
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app" style="">
-              <div class="portfolio-content h-100" style="position: relative; border-radius: 5px; overflow: hidden; box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.8);">
-                <img src="https://img.youtube.com/vi/xKIC9XQpIis/maxresdefault.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info portfolio-content-info">
-                  <h4 class="portfolio-headers">Atlantis-Firelink Slot</h4>
-                    <h1 class="portfolio-buttons">
-                        <a href="https://www.youtube.com/embed/xKIC9XQpIis" title="Atlantis-Firelink Slot" data-gallery="portfolio-gallery-app" class="glightbox link"> <i class="bi bi-youtube youtube-icon"></i> </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.example.app${i}" target="_blank" title="Download on Android"><i class="bi bi-android2 android-icon"></i></a>
-                        <a href="https://apps.apple.com/app/id${1000000 + i}" target="_blank" title="Download on iOS"><i class="bi bi-apple ios-icon"></i></a>
-                        <a href="https://apps.apple.com/app/id${1000000 + i}" target="_blank" title="Download on iOS"><i class="bi bi-link-45deg web-icon"></i></a>
-                    </h1>
-                  <p>Games connected to the Fire Link...<a href="portfolio-details.html" title="App 1 Video"> More Details </a></p>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
+              <!-- portfolio generated here-->
 
           </div><!-- End Portfolio Container -->
 
@@ -616,6 +583,11 @@ gameplay mechanics and captivating visuals.</p>
       </div>
 
     </section><!-- /Portfolio Section -->
+
+
+
+
+    
 
     <!-- Services Section -->
     <section id="services" class="services section" style="display:none;">
@@ -909,6 +881,82 @@ gameplay mechanics and captivating visuals.</p>
   <!-- Preloader -->
   <div id="preloader"></div>
 
+ <!-- data file -->
+  <script src="data.js"></script>
+
+<script type="text/javascript">
+   // window.onload = function() {
+   //    createFilters(videoData);
+   //    createPortfolio();
+   //  };
+
+   createFilters(videoData);
+   createPortfolio();
+
+   iso.arrange({
+    filter: '*',
+  });
+
+    function createPortfolio() {
+    const portfolioContainer = document.getElementById("portfolio_content");
+    var str="";
+    for (let i = 0; i < videoData.length; i++) {
+        const videoDataObj = videoData[i];
+
+        // Create portfolio item div
+         const portfolioItem = document.createElement("div");
+         const categoryClass1 = `filter-${videoDataObj.category.toLowerCase().replace(/\s+/g, "-")}`;
+        portfolioItem.classList.add("col-lg-4", "col-md-6", "portfolio-item", "isotope-item",categoryClass1);
+        portfolioItem.innerHTML = `
+            <div class="portfolio-content h-100" style="position: relative; border-radius: 5px; overflow: hidden; box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.8);">
+                <img src="https://img.youtube.com/vi/${videoDataObj.url.split("/embed/")[1]}/maxresdefault.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info portfolio-content-info">
+                    <h4 class="portfolio-headers">${videoDataObj.name}</h4>
+                    <h1 class="portfolio-buttons">
+                        <a href="${videoDataObj.url}" title="${videoDataObj.name}" data-gallery="portfolio-gallery-app" class="glightbox link">
+                            <i class="bi bi-youtube youtube-icon"></i>
+                        </a>
+                        ${
+                            videoDataObj.androidLink && videoDataObj.androidLink !== "null"
+                                ? `<a href="${videoDataObj.androidLink}" target="_blank" title="Download on Android"><i class="bi bi-android2 android-icon"></i></a>`
+                                : ""
+                        }
+                        ${
+                            videoDataObj.iosLink && videoDataObj.iosLink !== "null"
+                                ? `<a href="${videoDataObj.iosLink}" target="_blank" title="Download on iOS"><i class="bi bi-apple ios-icon"></i></a>`
+                                : ""
+                        }
+                    </h1>
+                    <p style="font-size: 12px;font-family: Monospace;color:yellow;">${videoDataObj.description.substring(0, 80)}..<a href="portfolio-details.html" style="font-size: 14px;font-family: Monospace;color:#149ddd;" title="${videoDataObj.name}">View More</a></p>
+                </div>
+            </div>
+        `;
+
+        portfolioContainer.appendChild(portfolioItem);
+    }
+}
+
+
+// Function to create unique filters based on categories
+function createFilters(data) {
+  const filterContainer = document.getElementById("portfolio-filters");
+
+  // Extract unique categories
+  const categories = Array.from(new Set(data.map((item) => item.category)));
+
+  // Add dynamic category filters
+  categories.forEach((category) => {
+    const categoryClass = `filter-${category.toLowerCase().replace(/\s+/g, "-")}`;
+    const listItem = document.createElement("li");
+    listItem.setAttribute("data-filter", `.${categoryClass}`);
+    listItem.textContent = category;
+    filterContainer.appendChild(listItem);
+  });
+}
+  </script>
+
+
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -920,10 +968,15 @@ gameplay mechanics and captivating visuals.</p>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-   <!-- data file -->
-  <script src="data.js"></script>
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+ 
+
+
+ 
+  
+
 
 </body>
 
