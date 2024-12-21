@@ -48,7 +48,7 @@
     <a href="index.html" class="logo d-flex align-items-center justify-content-center">
       <!-- Uncomment the line below if you also wish to use an image logo -->
       <!-- <img src="assets/img/logo.png" alt=""> -->
-      <h1 class="sitename">Alex Smith</h1>
+      <h1 class="sitename">Nitesh Parmar</h1>
     </a>
 
     <div class="social-links text-center">
@@ -63,10 +63,10 @@
       <ul>
         <li><a href="index.html#hero"><i class="bi bi-house navicon"></i>Home</a></li>
         <li><a href="index.html#about"><i class="bi bi-person navicon"></i> About</a></li>
-        <li><a href="index.html#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+        <li><a href="index.html#resume"><i class="bi bi-file-earmark-text navicon"></i>Resume</a></li>
         <li><a href="index.html#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
-        <li><a href="index.html#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
-        <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+<!--         <li><a href="index.html#services"><i class="bi bi-hdd-stack navicon" ></i> Services</a></li>
+        <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon" ></i> <span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>
             <li><a href="#">Dropdown 1</a></li>
             <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -82,8 +82,8 @@
             <li><a href="#">Dropdown 3</a></li>
             <li><a href="#">Dropdown 4</a></li>
           </ul>
-        </li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+        </li> -->
+        <li><a href="index.html#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
       </ul>
     </nav>
 
@@ -94,7 +94,7 @@
     <!-- Page Title -->
     <div class="page-title dark-background">
       <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Portfolio Details</h1>
+        <h1 class="mb-2 mb-lg-0" id="project_title">Portfolio Details</h1>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
@@ -114,7 +114,7 @@
           <div class="col-lg-8">
             <div class="portfolio-details-slider swiper init-swiper">
 
-              <script type="application/json" class="swiper-config">
+              <!-- <script type="application/json" class="swiper-config">
                 {
                   "loop": true,
                   "speed": 600,
@@ -128,28 +128,22 @@
                     "clickable": true
                   }
                 }
-              </script>
+              </script> -->
 
-              <div class="swiper-wrapper align-items-center">
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/app-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/product-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/branding-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/books-1.jpg" alt="">
-                </div>
-
-              </div>
-              <div class="swiper-pagination"></div>
+     <div class="swiper-wrapper align-items-center">
+  <div class="swiper-slide">
+    <iframe id="project_video" 
+      width="100%" 
+      height="500px" 
+      src="https://www.youtube.com/embed/lKEhyPsljiY?autoplay=0&mute=1" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+<div class="swiper-pagination"></div>
             </div>
           </div>
 
@@ -179,18 +173,14 @@
 
   </main>
 
-  <footer id="footer" class="footer position-relative light-background">
+    <footer id="footer" class="footer position-relative light-background">
 
     <div class="container">
       <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span></p>
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Nitesh Parmar</strong> <span>All Rights Reserved</span></p>
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a>
+        Designed by <a href="javascript:void(0);">Nitesh Parmar</a> Distributed by <a href="javascript:void(0);">Nitesh Parmar</a>
       </div>
     </div>
 
@@ -208,11 +198,20 @@
 
   <script type="text/javascript">
     const videoDataObj = videoData[findGetParameter("id")];
+
     const projectName = document.getElementById("project_name");
+    const project_title = document.getElementById("project_title");
+    
     projectName.innerHTML = videoDataObj.name;
+    project_title.innerHTML = videoDataObj.name;
 
     const projectDetail = document.getElementById("project_detail");
     projectDetail.innerHTML = videoDataObj.description;
+
+    const project_video = document.getElementById("project_video");
+    project_video.src=videoDataObj.url+"?autoplay=0&mute=1";
+    project_video.title=videoDataObj.name;
+
 
     function findGetParameter(parameterName) {
     var result = null,
