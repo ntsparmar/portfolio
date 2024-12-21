@@ -1,4 +1,4 @@
-var videoData =[
+const videoData =[
  {
   "category": "Multiplayer",
   "tag": "#Multiplayer,#3D,#API",
@@ -336,7 +336,7 @@ var videoData =[
   "category": "Casual",
   "tag": "#Casual,#2D",
   "name": "Super hexa fit",
-  "url": "null",
+  "url": "https://www.youtube.com/embed/tJ9rvakvoi8",
   "description": "Block Puzzle is the exciting new puzzle game that everyone’s playing!\n\nEasy to play and pleasurable game for all age. Simply Drag the blocks, and fill up all grids.\n\nFrom now on, let's enjoy a simple\n\nAn achievements have also been added to challenge your friends, colleagues and circles.\n\nYou can also connect your Facebook to compete with your friends on Super Hexa Fit",
   "androidLink": "https://itunes.apple.com/in/app/super-hexa-fit/id1111116865?mt=8",
   "iosLink": "https://itunes.apple.com/in/app/super-hexa-fit/id1111116865?mt=8"
@@ -354,7 +354,7 @@ var videoData =[
   "category": "Casual",
   "tag": "#Casual,#2D",
   "name": "Flappy magic bird",
-  "url": "null",
+  "url": "https://www.youtube.com/embed/OpnO17-O0PU",
   "description": "Flappy Magic Bird : Go as far as you can avoiding pipes.",
   "androidLink": "https://itunes.apple.com/in/app/flappy-magic-bird/id1004543881?mt=8",
   "iosLink": "https://itunes.apple.com/in/app/flappy-magic-bird/id1004543881?mt=8"
