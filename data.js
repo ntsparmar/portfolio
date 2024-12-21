@@ -327,7 +327,7 @@ var videoData =[
   "category": "Casual",
   "tag": "#Casual,#2D",
   "name": "MOWGLI JUMP - JUNGLE BOOK GAME",
-  "url": "null",
+  "url": "https://www.youtube.com/embed/j-XzNS8p0fM",
   "description": "An amazing gaming experience based on the characters from The Jungle Book.\nThe most innovative game on 'The Jungle Book'.\n\nTake a ride through the jungle river. Collect coins to unlock characters and use power-ups.\nSwim with Baloo, Jump over Crocodiles, Jump & slide on Kaa(Snake), Dodge Bandar(Monkey) attacks,\nClimb & Run on Hathi(Elephant) and Ride with Bagheera",
   "androidLink": "http://igeniusdev.com/portfolio/mowgli-jump-jungle-book-game",
   "iosLink": "null"
@@ -363,7 +363,7 @@ var videoData =[
   "category": "Casual",
   "tag": "#Casual,#2D",
   "name": "SANTA'S SLAY™ - CHRISTMAS GAME",
-  "url": "null",
+  "url": "https://www.youtube.com/embed/I1t3fxI7m-4",
   "description": "Legend tells of a Legendary Warrior living on top of a Snow capped mountain, guardian to the innocent, children & the Mountain Village.\n\nIt’s CHRISTMAS SEASON and the Mountain Village is haunted by Dark souled animals & Kallikantzaroi creatures. Now, you are bestowed with the legacy of the legend Saint Nicholas a.k.a. Santa Claus.\n\n* Guard the Mountain Village\n* Collect the Golden Snowflakes that the Gods send from sky for future upgrades\n* Kill the Dark Creatures while sliding on the snow (Swipe to Right & Slash)\n\nIn this release you’ll get to explore the Mountain ridge area during the Dawn, coming soon in the next update you’ll get More locations during the day, evening and night; more upgrades like Advanced Weapons, Snowboards, etc. and More dangerous Enemies. Experience this beginning of SANTA’s SLAY™ adventure and await for the update coming soon.",
   "androidLink": "http://igeniusdev.com/portfolio/santas-slay-christmas-game",
   "iosLink": "http://igeniusdev.com/portfolio/santas-slay-christmas-game"

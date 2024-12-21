@@ -154,7 +154,7 @@
           </div>
 
           <div class="col-lg-4">
-            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
+            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200" style="display:none;">
               <h3>Project information</h3>
               <ul>
                 <li><strong>Category</strong>: Web design</li>
@@ -164,8 +164,8 @@
               </ul>
             </div>
             <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
-              <h2>Exercitationem repudiandae officiis neque suscipit</h2>
-              <p>
+              <h2 id="project_name">Exercitationem repudiandae officiis neque suscipit</h2>
+              <p id="project_detail">
                 Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
               </p>
             </div>
@@ -201,6 +201,33 @@
 
   <!-- Preloader -->
   <div id="preloader"></div>
+
+
+   <!-- data file -->
+  <script src="data.js"></script>
+
+  <script type="text/javascript">
+    const videoDataObj = videoData[findGetParameter("id")];
+    const projectName = document.getElementById("project_name");
+    projectName.innerHTML = videoDataObj.name;
+
+    const projectDetail = document.getElementById("project_detail");
+    projectDetail.innerHTML = videoDataObj.description;
+
+    function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
+  </script>
+
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

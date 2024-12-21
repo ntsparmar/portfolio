@@ -929,7 +929,7 @@
                              <i class="bi bi-youtube youtube-icon"></i>
                          </a>
 
-                        <a href="portfolio-details.html" target="_blank" title="View More"><i class="bi bi-link-45deg web-icon"></i></a>
+                        <a href="portfolio-details.html?id=${i}" title="View More"><i class="bi bi-link-45deg web-icon"></i></a>
 
                          ${
                              videoDataObj.androidLink && videoDataObj.androidLink !== "null"
@@ -942,7 +942,7 @@
                                  : ""
                          }
                      </h1>
-                     <p style="font-size: 12px;font-family: Monospace;color:yellow;">${videoDataObj.description.substring(0, 80)}..<a href="portfolio-details.html" style="font-size: 14px;font-family: Monospace;color:#149ddd;" title="${videoDataObj.name}">View More</a></p>
+                     <p style="font-size: 12px;font-family: Monospace;color:yellow;">${videoDataObj.description.substring(0, 80)}..<a href="portfolio-details.html?id=${i}" style="font-size: 14px;font-family: Monospace;color:#149ddd;" title="${videoDataObj.name}">View More</a></p>
                  </div>
              </div>
          `;
