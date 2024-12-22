@@ -4,8 +4,8 @@ const videoData =[
   "tag": "#Multiplayer,#3D,#API",
   "name": "Fans of Soccer: Online Football Disc Challenge",
   "url": "https://www.youtube.com/embed/hl0tz3163vQ",
-  "description": "\"Fans of Soccer\" is an engaging turn-based multiplayer game powered by Photon, designed to bring the thrill of soccer strategy to your fingertips. In this game, you can participate in 1 vs. 1 real-time online matches, where strategic communication is facilitated through emojis, and you can deploy a range of attack and defense powers to outmaneuver your opponents. If you prefer solo play, challenge AI opponents and engage in tactical battles while chatting and using powers to conquer the virtual soccer field.\n\nTo keep the excitement alive, the game offers monthly event modes that unlock on the 1st of each month, providing additional opportunities to earn rewards and showcase your skills. Moreover, on the 15th of every month, you can compete in the World Championship mode, a prestigious event that allows you to prove yourself as the ultimate soccer strategist.\n\nFor those who thrive in competitive environments, there are 8-player tournaments with three stages: the initial 8-player round, the thrilling Semi-Finals with four players, and the ultimate showdown in the Finals with two players vying for valuable prizes. Daily missions are also available from Monday to Friday, allowing you to earn rewards and hone your soccer prowess.\n\nYour player profile is securely stored on the server, showcasing your achievements and progress in the game. Customize your team's formation with various dice options, each offering unique strategic advantages that can turn the tide of the game in your favor.\n\nTo enhance your gaming experience, you can collect and choose from a diverse array of dice, each possessing distinctive powers that can significantly impact the outcome of matches. In-app purchases are available, allowing you to acquire in-game currency for access to exclusive items and upgrades.\n\nLogging in is a breeze with options such as Facebook, Google, or a guest account, ensuring you can quickly dive into the action. Expand your soccer network by finding friends using their IDs or names, challenge them, send gifts, and check who's online for some friendly competition.\n\nStay informed with push notifications, courtesy of Firebase integration, ensuring you never miss out on challenges and daily rewards. Additionally, the game offers two exciting mini-games, allowing you to earn even more rewards while enjoying some casual gaming fun.\n\nWith \"Fans of Soccer,\" you can immerse yourself in the world of soccer strategy, compete globally, and forge friendships while navigating through a dynamic gaming environment filled with events, challenges, and endless possibilities. Are you ready to become a soccer legend?",
-  "androidLink": "https://play.google.com/store/apps/details?id=com.omentertainment.soccerfans",
+  "description": "<p>\n   1vs1 real time multiplayer game.also play with AI if not any user\n   online.\n   </br>\n   <strong>Features:</strong>\n<ul>\n   <li><strong>1 vs 1: </strong> realtime online game(user cant chat with emojis,user can user various attack and defense powers)</li>\n   <li><strong>Play with AI: </strong>(also user can chat and use powers with AI)</li>\n   <li><strong>Event: </strong>User will get every months 1<sup>st</sup> date new mode of game this game mode will allow user to earn more game rewards</li>\n   <li><strong>World Championship: </strong>user will get new mode of game at 15<sup>th</sup> date of month</li>\n   <li><strong>Tournament: </strong>User can play 8 player tournaments(1<sup>st</sup>round=8 player, 2<sup>nd</sup>round Semi Final=4 player, 3<sup>rd</sup>round Final=2 player) final winner will gate the prize</li>\n   <li><strong>Mission: </strong> User will get daily mission and get prize(Monday-Friday)</li>\n   </li>\n   <li><strong> Player Profile: </strong>player profile will be saved to server</li>\n   <li><strong>Formation: </strong> User has various dice formation option</li>\n   <li> <strong>Dice: </strong> user has many option to buy dice with powers</li>\n   <li> <strong>In app purchase: </strong> user can buy currency from store</li>\n   <li> <strong>Login Options: </strong>User can login with Facebook,Google, and\n      Guest\n   </li>\n   <li> <strong>Friends Functionality: </strong>User can search new friends by its\n      Id or Name and make the friends. User can send challenge\n      or gift to its friends.also user can see which friends is online\n   </li>\n   <li> <strong>Gift: </strong>User can send Gift daily five friends.</li>\n   <li> <strong>Notification: </strong>Push Notification for challenge and daily\n      rewards.(using Firebase)\n   </li>\n   <li> <strong>Mini Games: </strong>User can play two minigames with this games\n      and earn more rewards  \n   </li>\n</ul>\n</p>",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -13,8 +13,8 @@ const videoData =[
   "tag": "#Multiplayer,#2D#API",
   "name": "Qikplay - Win Real Gift Cards",
   "url": "https://www.youtube.com/embed/yabdeTjGhek",
-  "description": "\"Quick Play-Win Real Gift Cards\" is a unique multiplayer game that offers a fusion of classic board games and tangible rewards. With its 1 vs. 1 real-time online matches in Ludo and Uno, players can enjoy the excitement of these beloved games while competing against opponents worldwide. What sets this game apart is its innovative reward system. By participating in matches and accumulating in-game currency, players have the opportunity to redeem real gift cards, opening up a world of shopping possibilities. This enticing prospect adds an extra layer of motivation to the gameplay.\n\nIn addition to the game's engaging matches, \"Quick Play-Win Real Gift Cards\" offers a Daily Rewards feature through the Spine Wheel. This feature provides players with daily bonuses and incentives, ensuring that dedicated players are consistently rewarded for their commitment. Player profiles are securely saved on the server, allowing gamers to track their achievements, progress, and statistics, creating a sense of identity and progression within the game.\n\nFor those looking to enhance their gaming experience, the game provides in-app purchases, allowing players to acquire in-game currency from the store. This currency can be used to access exclusive items, bonuses, and advantages, tailoring the gaming experience to individual preferences. Players can also choose from multiple login options, including Facebook, Google, or guest accounts, ensuring quick and convenient access to the game.\n\nFurthermore, the social aspect of the game adds to its appeal. Players can add new friends and challenge them to matches, elevating the competitive spirit and making the experience even more enjoyable when shared with friends. \"Quick Play-Win Real Gift Cards\" brings together the thrill of classic board games, the excitement of real-time multiplayer competition, and the satisfaction of earning tangible rewards. It's a gaming experience that promises both entertainment and practical benefits, offering the chance to turn virtual success into real-world gains. Whether aiming for victory in Ludo or showcasing card skills in Uno, this game provides endless hours of enjoyment and the opportunity to win real gift cards, making it a must-try for gaming enthusiasts. Join the gaming community and embark on your journey to winning real gift cards today!",
-  "androidLink": "https://play.google.com/store/apps/details?id=com.Qikplay.LudoandUNO",
+  "description": "<p>\n   1 vs 1 realtime multiplayer game.user can play Ludo and Uno game\n   </br>\n   <strong>Features:</strong>\n<ul>\n   <li><strong>Ludo Game: </strong>Play Ludo game with 1 vs 1 realtime online game.</li>\n   <li><strong>Uno Game: </strong>Play Uno game with 1 vs 1 realtime online game.</li>\n   <li><strong>Real Gift Card: </strong>User can earn currency to buy playing game.</li>\n   <li><strong>Gift Card: </strong>Games and user can buy gift card.using this gift card user\n      can shopping\n   </li>\n   <li><strong>Daily Rewards: </strong> User can collect the daily rewards using Spin Wheel.</li>\n   <li><strong>Player Profile: </strong>Player profile save to the server</li>\n   <li><strong>In app purchase: </strong> user can buy currency from store</li>\n   <li><strong>Login Options: </strong>User can login with Facebook,Google, and\n      Guest\n   </li>\n   <li><strong>Friends Funcationality: </strong>User can add new friends and\n      play with them\n   </li>\n</ul>\n</p>",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -22,8 +22,8 @@ const videoData =[
   "tag": "#Multiplayer,#3D",
   "name": "ISTO3D-WiFi Multiplayer Game",
   "url": "https://www.youtube.com/embed/H7t18n0Rl6U",
-  "description": "ISTO 3D is an Indian Ludo game, offering a rich gaming experience built on Unity3D with C#. This 4-player game allows users to engage in exciting matches, either playing with friends over Wi-Fi or challenging AI opponents. Additionally, the game provides in-app purchase options to enhance gameplay and customization. Enjoy the timeless fun of Ludo with friends or test your skills against AI opponents, all within a vibrant and immersive 3D environment.",
-  "androidLink": "https://play.google.com/store/apps/details?id=com.moxmind.isto&authuser=0",
+  "description": "     <p>\n      ISTO 3D is an Indian Ludo game, offering a rich gaming experience built on Unity3D with C#. \n      </br>\n      </br>\n      This 4-player game allows users to engage in exciting matches, either playing with friends over Wi-Fi or challenging AI opponents. \n      </br></br>\n      Additionally, the game provides in-app purchase options to enhance gameplay and customization. Enjoy the timeless fun of Ludo with friends or test your skills against AI opponents, all within a vibrant and immersive 3D environment.\n      </p>",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -31,7 +31,7 @@ const videoData =[
   "tag": "#Multiplayer,#2D#API",
   "name": "Fish Game",
   "url": "https://www.youtube.com/embed/Oh1gzRQcsuY",
-  "description": "Dive into an immersive aquatic adventure with our Fish Games, offering real-time multiplayer action powered by the Mirror and GameLift SDKs. Your underwater journey is armed with an arsenal of unique guns, including the precision of the Single Gun, the firepower of the Double Gun, the incendiary effects of the Fire Gun, and the precision-focused Laser Gun.\n\nBut that's not all – you'll have Freezing and Summon powers at your disposal, adding strategic depth to your gameplay. Freeze your foes in their tracks or summon reinforcements to aid your quest for underwater supremacy.\n\nPrepare to encounter 13 distinct types of fish, each with their own unique kill values. Some are elusive and challenging to catch, while others are bountiful treasures waiting to be claimed. Strategize and choose your weapons wisely to maximize your rewards.\n\nWhether you're a high-stakes player or just looking for some casual fun, our game offers the flexibility to play with real money for that authentic casino thrill or use virtual currency to refine your skills and explore the depths of the underwater world risk-free.\n\nDive in, team up with friends or challenge players from around the globe, and embark on an epic underwater adventure in Fish Games. Let the hunt begin!",
+  "description": "      <p>\n Dive into an immersive aquatic adventure with our Fish Games, offering real-time multiplayer action powered by the Mirror and GameLift SDKs. Your underwater journey is armed with an arsenal of unique guns, including the precision of the Single Gun, the firepower of the Double Gun, the incendiary effects of the Fire Gun, and the precision-focused Laser Gun.\n</br></br>\nBut that's not all – you'll have Freezing and Summon powers at your disposal, adding strategic depth to your gameplay. Freeze your foes in their tracks or summon reinforcements to aid your quest for underwater supremacy.\n</br></br>\nPrepare to encounter 13 distinct types of fish, each with their own unique kill values. Some are elusive and challenging to catch, while others are bountiful treasures waiting to be claimed. Strategize and choose your weapons wisely to maximize your rewards.\n</br></br>\nWhether you're a high-stakes player or just looking for some casual fun, our game offers the flexibility to play with real money for that authentic casino thrill or use virtual currency to refine your skills and explore the depths of the underwater world risk-free.\n</br></br>\nDive in, team up with friends or challenge players from around the globe, and embark on an epic underwater adventure in Fish Games. Let the hunt begin!\n      </p>",
   "androidLink": "null",
   "iosLink": "null"
  },
@@ -40,8 +40,8 @@ const videoData =[
   "tag": "#AR,#3D",
   "name": "Modi ki Note - Modi Rocks",
   "url": "https://www.youtube.com/embed/tvcmQ9ttPHc",
-  "description": "\"Modi Ki Note(AR)\" is a unique augmented reality (AR) app designed for scanning new ₹2000 or ₹500 Indian Rupee notes, transforming them into a cartoon version of Prime Minister Narendra Modi. With just a tap, you can customize Modi Ji's appearance, including his specs, turban, shoes, trousers, pyjamas, and even equip him with a microphone. This fun and creative app offer a playful way to personalize your currency notes with a touch of humor and imagination.",
-  "androidLink": "https://play.google.com/store/apps/details?id=com.MoxMind.ModiRocksRocks&authuser=0",
+  "description": "      <p>\n\"Modi Ki Note(AR)\" is a unique augmented reality (AR) app designed for scanning new ₹2000 or ₹500 Indian Rupee notes, transforming them into a cartoon version of Prime Minister Narendra Modi. With just a tap, you can customize Modi Ji's appearance, including his specs, turban, shoes, trousers, pyjamas, and even equip him with a microphone. \n</br></br>\nThis fun and creative app offer a playful way to personalize your currency notes with a touch of humor and imagination.\n      </p>",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -49,7 +49,7 @@ const videoData =[
   "tag": "#AR,#3D",
   "name": "AR Furniture Placing",
   "url": "https://www.youtube.com/embed/zQyiA3mE6KY",
-  "description": "The AR Furniture Placing app is a game-changing tool for interior design enthusiasts and homeowners alike. It empowers users to reimagine and customize their living spaces by seamlessly integrating the virtual and physical worlds. Within the app's extensive library, users can select from a vast array of 3D furniture models, representing a wide range of styles and brands. Using the device's camera and augmented reality technology, these virtual furniture items can be precisely placed within the user's real-world environment. What sets this app apart is the ability to experiment with different furniture layouts and configurations, offering an unparalleled level of creative freedom. Once the furniture is in place, users can explore their virtual home from every angle, truly visualizing how these pieces will fit into their space. This app streamlines the decision-making process, reducing the risk of mismatched purchases and making it an invaluable tool for anyone undertaking interior design projects or simply seeking to explore new design ideas. It's a transformative experience that brings dreams of home improvement to life, all within the convenience of a smartphone or tablet.",
+  "description": "      <p>\nThe AR Furniture Placing app is a game-changing tool for interior design enthusiasts and homeowners alike. It empowers users to reimagine and customize their living spaces by seamlessly integrating the virtual and physical worlds. Within the app's extensive library, users can select from a vast array of 3D furniture models, representing a wide range of styles and brands. \n</br></br>\nUsing the device's camera and augmented reality technology, these virtual furniture items can be precisely placed within the user's real-world environment. What sets this app apart is the ability to experiment with different furniture layouts and configurations, offering an unparalleled level of creative freedom. Once the furniture is in place, users can explore their virtual home from every angle, truly visualizing how these pieces will fit into their space. \n</br></br>\nThis app streamlines the decision-making process, reducing the risk of mismatched purchases and making it an invaluable tool for anyone undertaking interior design projects or simply seeking to explore new design ideas. It's a transformative experience that brings dreams of home improvement to life, all within the convenience of a smartphone or tablet.\n      </p>",
   "androidLink": "null",
   "iosLink": "null"
  },
@@ -58,7 +58,7 @@ const videoData =[
   "tag": "#AR,#3D",
   "name": "Cube Throw Game",
   "url": "https://www.youtube.com/embed/SjSTNkY-P78",
-  "description": "The \"Cube Throw Game\" is an augmented reality (AR) game that adds an exciting twist to a classic party challenge. In this interactive and immersive experience, players aim to throw a virtual cube into a tea cup using their AR-equipped devices. The objective is to precisely toss the cube into the cup while considering factors such as distance, angle, and force.\n\nThis game combines the physical act of throwing with the immersive capabilities of AR technology, creating an engaging and entertaining activity for players of all ages. Whether you're challenging friends at a gathering or enjoying a solo gaming session, the \"Cube Throw Game\" promises hours of fun as you aim for that perfect toss into the tea cup.",
+  "description": "      <p>\nThe \"Cube Throw Game\" is an augmented reality (AR) game that adds an exciting twist to a classic party challenge. In this interactive and immersive experience, players aim to throw a virtual cube into a tea cup using their AR-equipped devices. The objective is to precisely toss the cube into the cup while considering factors such as distance, angle, and force.\n</br></br>\nThis game combines the physical act of throwing with the immersive capabilities of AR technology, creating an engaging and entertaining activity for players of all ages. Whether you're challenging friends at a gathering or enjoying a solo gaming session, the \"Cube Throw Game\" promises hours of fun as you aim for that perfect toss into the tea cup.\n      </p>",
   "androidLink": "null",
   "iosLink": "null"
  },
@@ -67,7 +67,7 @@ const videoData =[
   "tag": "#AR,#3D",
   "name": "AR Vehicle Classification",
   "url": "https://www.youtube.com/embed/lN1BTqv5haU",
-  "description": "\"Car Game Module(AR)\" is an innovative augmented reality (AR) game that offers users an engaging and interactive experience with a fleet of virtual vehicles. Using markers as reference points, users can place and view these vehicles in their real-world surroundings, creating an immersive and lifelike experience of driving various cars. With approximately 25 different vehicles to choose from, including sports cars, trucks, and classic automobiles, the game caters to a wide range of preferences. What sets this game apart is its commitment to realism, providing users with precise driving controls. Players can accelerate, brake, steer, and maneuver the vehicles with precision, ensuring an authentic and enjoyable driving experience. \"Car Game Module(AR)\" seamlessly blends the thrill of driving diverse vehicles with the captivating capabilities of augmented reality, offering users a unique and entertaining way to explore their love for automobiles in their own environment. Whether you're a car enthusiast or simply seeking an engaging AR adventure, this game promises hours of interactive entertainment.",
+  "description": "      <p>\n\"Car Game Module(AR)\" is an innovative augmented reality (AR) game that offers users an engaging and interactive experience with a fleet of virtual vehicles. \n</br></br>\nUsing markers as reference points, users can place and view these vehicles in their real-world surroundings, creating an immersive and lifelike experience of driving various cars. With approximately 25 different vehicles to choose from, including sports cars, trucks, and classic automobiles, the game caters to a wide range of preferences. \n</br></br>\nWhat sets this game apart is its commitment to realism, providing users with precise driving controls. Players can accelerate, brake, steer, and maneuver the vehicles with precision, ensuring an authentic and enjoyable driving experience. \n</br></br>\n\"Car Game Module(AR)\" seamlessly blends the thrill of driving diverse vehicles with the captivating capabilities of augmented reality, offering users a unique and entertaining way to explore their love for automobiles in their own environment. Whether you're a car enthusiast or simply seeking an engaging AR adventure, this game promises hours of interactive entertainment.\n</br></br>\n      </p>",
   "androidLink": "null",
   "iosLink": "null"
  },
@@ -76,7 +76,7 @@ const videoData =[
   "tag": "#VR,#3D",
   "name": "VR - Home Interior",
   "url": "https://www.youtube.com/embed/efqDzqq10F4",
-  "description": "In the realm of virtual reality (VR) for home interiors, users can embark on a captivating journey to explore and customize their dream homes. This immersive VR experience allows individuals to enter a virtual representation of a home or living space, complete with various rooms and areas to explore. Users can wander through these digital environments, closely inspecting every detail, from furnishings to architectural elements.\n\nFurthermore, this VR technology empowers users to experiment with home design and customization. They can rearrange furniture, change the color schemes of walls and décor, and even modify structural aspects of the virtual home, all within the immersive VR environment. This interactive exploration and customization process facilitate informed decision-making for real-life home improvement or interior design projects.\n\nIn essence, VR for home interiors transforms the way individuals conceptualize and personalize their living spaces. It offers a realistic and engaging platform for interior design, enabling users to visualize, experiment, and refine their home environments before making any physical changes. This innovation enhances the home design experience, making it more interactive, creative, and tailored to individual preferences.",
+  "description": "      <p>\nIn the realm of virtual reality (VR) for home interiors, users can embark on a captivating journey to explore and customize their dream homes. This immersive VR experience allows individuals to enter a virtual representation of a home or living space, complete with various rooms and areas to explore. Users can wander through these digital environments, closely inspecting every detail, from furnishings to architectural elements.\n</br></br>\nFurthermore, this VR technology empowers users to experiment with home design and customization. They can rearrange furniture, change the color schemes of walls and décor, and even modify structural aspects of the virtual home, all within the immersive VR environment. This interactive exploration and customization process facilitate informed decision-making for real-life home improvement or interior design projects.\n</br></br>\nIn essence, VR for home interiors transforms the way individuals conceptualize and personalize their living spaces. It offers a realistic and engaging platform for interior design, enabling users to visualize, experiment, and refine their home environments before making any physical changes. This innovation enhances the home design experience, making it more interactive, creative, and tailored to individual preferences.\n</br></br>\n      </p>",
   "androidLink": "null",
   "iosLink": "null"
  },
@@ -85,7 +85,7 @@ const videoData =[
   "tag": "#VR,#3D",
   "name": "The Bug Butcher",
   "url": "https://www.youtube.com/embed/FVrF3efVAVM",
-  "description": "\"The Bug Slayer(VR)\" is a straightforward and immersive VR game that centers around bug extermination. In this virtual reality experience, players find themselves in a challenging environment where they must skillfully shoot down bugs as they approach in the river. With each bug eliminated, players can accumulate valuable coins that can be used to acquire powerful new firearms. The game's objective is clear: become the ultimate bug slayer by effectively targeting and eliminating these pesky insects while amassing rewards to enhance your arsenal. It's a game designed to deliver a thrilling and action-packed VR shooting experience.",
+  "description": "<p>\n\"The Bug Slayer(VR)\" is a straightforward and immersive VR game that centers around bug extermination.\n</br></br>\nIn this virtual reality experience, players find themselves in a challenging environment where they must skillfully shoot down bugs as they approach in the river. With each bug eliminated, players can accumulate valuable coins that can be used to acquire powerful new firearms. \n</br></br>\nThe game's objective is clear: become the ultimate bug slayer by effectively targeting and eliminating these pesky insects while amassing rewards to enhance your arsenal. It's a game designed to deliver a thrilling and action-packed VR shooting experience.\n</br></br>\n      </p>",
   "androidLink": "null",
   "iosLink": "null"
  },
@@ -94,7 +94,7 @@ const videoData =[
   "tag": "#casino,#2D#API",
   "name": "Raptor-Firelink slot",
   "url": "https://www.youtube.com/embed/G5pBg2vddzo",
-  "description": "Games connected to the Fire Link mechanic will use fireballs on the reels. Each fireball will have a value that it displays. In the base game, the first through fourth rows will have fireballs with a value of 1x to 100x the wager, or trigger jackpots: mini, minor, or major.\n\nFour or more fireballs on the reels triggers the Fire Link feature. You are given three spins, and the fireballs that activate the round will hold. Any fireballs that appear from the free spins also stay. As you collect more fireballs, new rows can be added to the reels. Up to four extra reels can appear in the game, giving you more win potential. Once the round is completed, the fireballs show their values, be it multipliers or jackpot prizes.",
+  "description": "      <p>\nGames connected to the Fire Link mechanic will use fireballs on the reels. Each fireball will have a value that it displays. In the base game, the first through fourth rows will have fireballs with a value of 1x to 100x the wager, or trigger jackpots: mini, minor, or major.\n</br></br>\nFour or more fireballs on the reels triggers the Fire Link feature. You are given three spins, and the fireballs that activate the round will hold. Any fireballs that appear from the free spins also stay. As you collect more fireballs, new rows can be added to the reels. Up to four extra reels can appear in the game, giving you more win potential. Once the round is completed, the fireballs show their values, be it multipliers or jackpot prizes.\n</br></br>\n      </p>",
   "androidLink": "null",
   "iosLink": "null"
  },
@@ -103,7 +103,7 @@ const videoData =[
   "tag": "#casino,#2D#API",
   "name": "Cosmoslot-Slot,Keno,Fish",
   "url": "https://www.youtube.com/embed/8D8YgmX7jjA",
-  "description": "Slot machines offer a thrilling gaming experience with features like Autoplay, Wilds, Scatters, Free Spins, and Bonus Rounds, enhancing your chances of winning. Multipliers can boost your rewards, while Progressive Jackpots offer life-changing payouts. For the risk-takers, there's the Gamble feature. Paylines and Adjacent Ways provide various ways to win, and Cascading Reels create exciting chain reactions. You have the option to play with real money for a genuine casino feel or use virtual currency to enjoy the game risk-free.",
+  "description": "<p><h2>1. Slot Games</h2>\n  <p>\n    <strong>Overview:</strong> Slot games are fast-paced and luck-based games featuring spinning reels with various symbols. Players aim to match symbols on paylines to win prizes.\n  </p>\n  <ul>\n    <li><strong>Themes and Graphics:</strong> Wide variety of themes (e.g., Ancient Egypt, Space Adventure, Mythical Creatures) with high-quality graphics and animations.</li>\n    <li><strong>Special Symbols:</strong> Wild symbols, scatter symbols, and multiplier symbols enhance gameplay.</li>\n    <li><strong>Bonus Features:</strong> Free spins, mini-games, and progressive jackpots.</li>\n    <li><strong>Betting Options:</strong> Flexible limits and adjustable paylines for strategy customization.</li>\n    <li><strong>Social Integration:</strong> Leaderboards and coin gifting options.</li>\n  </ul>\n\n  <h2>2. Keno</h2>\n  <p>\n    <strong>Overview:</strong> Keno is a lottery-style game where players pick numbers from a grid, and a random draw determines the winning numbers.\n  </p>\n  <ul>\n    <li><strong>Gameplay:</strong> Players choose numbers (1–20) from a grid (e.g., 1–80). Random draws select the winning numbers.</li>\n    <li><strong>Winning Multipliers:</strong> Payouts depend on how many chosen numbers match the drawn numbers.</li>\n    <li><strong>Betting Options:</strong> Variety of bet sizes with a Quick Pick feature for randomly generated numbers.</li>\n    <li><strong>Special Rounds:</strong> Bonus rounds with increased odds or multipliers.</li>\n    <li><strong>Customizable Themes:</strong> Different themes for grids and numbers.</li>\n    <li><strong>Social Features:</strong> Multiplayer modes and chat functionality.</li>\n  </ul>\n\n  <h2>3. Fish Games</h2>\n  <p>\n    <strong>Overview:</strong> Fish games are skill-based shooting games where players aim to catch fish for points and rewards.\n  </p>\n  <ul>\n    <li><strong>Gameplay Mechanics:</strong> Use cannons to shoot fish, each with varying difficulty and rewards.</li>\n    <li><strong>Weapons and Power-ups:</strong> Upgrade cannons and use power-ups like freezing time or rapid-fire.</li>\n    <li><strong>Multiplayer Modes:</strong> Real-time battles and co-op modes.</li>\n    <li><strong>Special Fish and Bosses:</strong> Rare fish and boss encounters for massive payouts.</li>\n    <li><strong>Tournaments and Leaderboards:</strong> Compete in timed events to win prizes and rank high.</li>\n    <li><strong>In-Game Currency:</strong> Earn or purchase coins to reload cannons and buy upgrades.</li>\n  </ul>\n\n  <h2>4. Poker</h2>\n  <p>\n    <strong>Overview:</strong> Poker is a strategy-based card game with variations like Texas Hold’em, Omaha, and Five-Card Draw. Players compete for the best hand or bluff opponents into folding.\n  </p>\n  <ul>\n    <li><strong>Game Modes:</strong> Includes Texas Hold’em, Omaha, and Sit & Go Tournaments.</li>\n    <li><strong>Betting Options:</strong> Multiple table stakes and blind structures.</li>\n    <li><strong>Social Features:</strong> Play with friends, chat, and send gifts.</li>\n    <li><strong>Leaderboards and Rankings:</strong> Global leaderboards and rank progression with rewards.</li>\n    <li><strong>Customizable Avatars and Tables:</strong> Personalize your avatar and table themes.</li>\n    <li><strong>Bluffing and Strategy:</strong> Real-time interactions for bluffing opponents.</li>\n    <li><strong>In-App Purchases:</strong> Buy chips or unlock premium features.</li>\n  </ul>\n\n  <h2>Shared Features Across All Games</h2>\n  <ul>\n    <li><strong>Daily Rewards:</strong> Spin wheels or login bonuses for free coins or rewards.</li>\n    <li><strong>In-App Purchases:</strong> Options to buy coins, currency, or premium features.</li>\n    <li><strong>Player Profiles:</strong> Track stats, achievements, and progress.</li>\n    <li><strong>Multiplayer Features:</strong> Play with friends or compete with global players.</li>\n    <li><strong>Login Options:</strong> Sign in with Facebook, Google, or Guest Mode.</li>\n  </ul>\n      </p>",
   "androidLink": "null",
   "iosLink": "null"
  },
@@ -112,7 +112,7 @@ const videoData =[
   "tag": "#casino,#2D#API",
   "name": "BoomWins-Slot,Keno,Fish",
   "url": "https://www.youtube.com/embed/NeunV8q78Tk",
-  "description": "Slot machines offer a thrilling gaming experience with features like Autoplay, Wilds, Scatters, Free Spins, and Bonus Rounds, enhancing your chances of winning. Multipliers can boost your rewards, while Progressive Jackpots offer life-changing payouts. For the risk-takers, there's the Gamble feature. Paylines and Adjacent Ways provide various ways to win, and Cascading Reels create exciting chain reactions. You have the option to play with real money for a genuine casino feel or use virtual currency to enjoy the game risk-free.",
+  "description": "<p><h2>1. Slot Games</h2>\n  <p>\n    <strong>Overview:</strong> Slot games are fast-paced and luck-based games featuring spinning reels with various symbols. Players aim to match symbols on paylines to win prizes.\n  </p>\n  <ul>\n    <li><strong>Themes and Graphics:</strong> Wide variety of themes (e.g., Ancient Egypt, Space Adventure, Mythical Creatures) with high-quality graphics and animations.</li>\n    <li><strong>Special Symbols:</strong> Wild symbols, scatter symbols, and multiplier symbols enhance gameplay.</li>\n    <li><strong>Bonus Features:</strong> Free spins, mini-games, and progressive jackpots.</li>\n    <li><strong>Betting Options:</strong> Flexible limits and adjustable paylines for strategy customization.</li>\n    <li><strong>Social Integration:</strong> Leaderboards and coin gifting options.</li>\n  </ul>\n\n  <h2>2. Keno</h2>\n  <p>\n    <strong>Overview:</strong> Keno is a lottery-style game where players pick numbers from a grid, and a random draw determines the winning numbers.\n  </p>\n  <ul>\n    <li><strong>Gameplay:</strong> Players choose numbers (1–20) from a grid (e.g., 1–80). Random draws select the winning numbers.</li>\n    <li><strong>Winning Multipliers:</strong> Payouts depend on how many chosen numbers match the drawn numbers.</li>\n    <li><strong>Betting Options:</strong> Variety of bet sizes with a Quick Pick feature for randomly generated numbers.</li>\n    <li><strong>Special Rounds:</strong> Bonus rounds with increased odds or multipliers.</li>\n    <li><strong>Customizable Themes:</strong> Different themes for grids and numbers.</li>\n    <li><strong>Social Features:</strong> Multiplayer modes and chat functionality.</li>\n  </ul>\n\n  <h2>3. Fish Games</h2>\n  <p>\n    <strong>Overview:</strong> Fish games are skill-based shooting games where players aim to catch fish for points and rewards.\n  </p>\n  <ul>\n    <li><strong>Gameplay Mechanics:</strong> Use cannons to shoot fish, each with varying difficulty and rewards.</li>\n    <li><strong>Weapons and Power-ups:</strong> Upgrade cannons and use power-ups like freezing time or rapid-fire.</li>\n    <li><strong>Multiplayer Modes:</strong> Real-time battles and co-op modes.</li>\n    <li><strong>Special Fish and Bosses:</strong> Rare fish and boss encounters for massive payouts.</li>\n    <li><strong>Tournaments and Leaderboards:</strong> Compete in timed events to win prizes and rank high.</li>\n    <li><strong>In-Game Currency:</strong> Earn or purchase coins to reload cannons and buy upgrades.</li>\n  </ul>\n\n  <h2>4. Poker</h2>\n  <p>\n    <strong>Overview:</strong> Poker is a strategy-based card game with variations like Texas Hold’em, Omaha, and Five-Card Draw. Players compete for the best hand or bluff opponents into folding.\n  </p>\n  <ul>\n    <li><strong>Game Modes:</strong> Includes Texas Hold’em, Omaha, and Sit & Go Tournaments.</li>\n    <li><strong>Betting Options:</strong> Multiple table stakes and blind structures.</li>\n    <li><strong>Social Features:</strong> Play with friends, chat, and send gifts.</li>\n    <li><strong>Leaderboards and Rankings:</strong> Global leaderboards and rank progression with rewards.</li>\n    <li><strong>Customizable Avatars and Tables:</strong> Personalize your avatar and table themes.</li>\n    <li><strong>Bluffing and Strategy:</strong> Real-time interactions for bluffing opponents.</li>\n    <li><strong>In-App Purchases:</strong> Buy chips or unlock premium features.</li>\n  </ul>\n\n  <h2>Shared Features Across All Games</h2>\n  <ul>\n    <li><strong>Daily Rewards:</strong> Spin wheels or login bonuses for free coins or rewards.</li>\n    <li><strong>In-App Purchases:</strong> Options to buy coins, currency, or premium features.</li>\n    <li><strong>Player Profiles:</strong> Track stats, achievements, and progress.</li>\n    <li><strong>Multiplayer Features:</strong> Play with friends or compete with global players.</li>\n    <li><strong>Login Options:</strong> Sign in with Facebook, Google, or Guest Mode.</li>\n  </ul>\n      </p>",
   "androidLink": "null",
   "iosLink": "null"
  },
@@ -121,7 +121,7 @@ const videoData =[
   "tag": "#casino,#2D#API",
   "name": "Cascade Slot",
   "url": "https://www.youtube.com/embed/bcQnWN162F4",
-  "description": "Cascading reels is a gambling term most often used by slot machine and video slot players. The term describes a bonus feature that appears each time you land a winning combination. Video slot software developers have designed numerous creative cascading reels.",
+  "description": "A Cascading Slot Game is a unique type of slot machine where symbols fall into place rather than spinning. When a winning combination is formed, the winning symbols disappear, and new ones cascade down to replace them, potentially creating multiple wins from a single spin. Features often include multipliers, free spins, wild symbols, and bonus rounds, enhancing the excitement and payout potential. The cascading feature increases the chances of consecutive wins, making for a dynamic and engaging gaming experience.",
   "androidLink": "null",
   "iosLink": "null"
  },
@@ -140,7 +140,7 @@ const videoData =[
   "name": "Maggots Fight",
   "url": "https://www.youtube.com/embed/Lvf_95wUm8o",
   "description": "\n\"Maggots Fight\" is a unique and intriguing game where players take on the role of controlling maggots using a joystick to pursue their prey - Bird Flash. In this unusual and captivating gaming experience, the objective is clear: guide the maggots as they strive to catch and consume Bird Flash. The game combines precise control mechanics with a distinct and imaginative concept, promising an engaging and challenging adventure where players must master the art of maggot navigation to achieve their goal. It's an intriguing twist on the classic predator-prey dynamic, offering a fresh and exciting gaming experience.",
-  "androidLink": "https://play.google.com/store/apps/details?id=com.redlinegames.bugsattack3d",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -158,7 +158,7 @@ const videoData =[
   "name": "Pandora Box",
   "url": "https://www.youtube.com/embed/lNOO9BWERLI",
   "description": "\"Pandora Box\" presents an intriguing and challenging gameplay concept where players are thrust into a world of supernatural intrigue. In this game, the mysterious Pandora's Box has been opened, releasing mischievous ghosts into the world. Players must take on the role of ghost hunters and embark on a quest to capture these elusive spirits. The objective is clear: pursue and catch the ghosts as they fly and flee, with each level culminating in a thrilling ghost-catching showdown. This game offers a unique blend of mystery, strategy, and ghost-catching excitement, making it an immersive and captivating gaming experience.",
-  "androidLink": "https://play.google.com/store/apps/details?id=com.redlinegames.pandorarun",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -167,7 +167,7 @@ const videoData =[
   "name": "Monster Land",
   "url": "https://www.youtube.com/embed/x7V9x7FC2J8",
   "description": "In \"Monster Land,\" players embark on an action-packed adventure set in a world teeming with fantastical creatures. As the hero of the story, your mission is to explore this treacherous land, seeking out and engaging with groups of smaller yet potent minion monsters. The objective is clear: hunt down these menacing groups, defeating them to level up your character. With each successful confrontation, your hero becomes stronger and better equipped to face even greater challenges. \"Monster Land\" delivers an exciting mix of exploration, strategic combat, and character growth, making it a thrilling and immersive gaming experience.",
-  "androidLink": "https://play.google.com/store/apps/details?id=com.redlinegames.fightevolution",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -176,7 +176,7 @@ const videoData =[
   "name": "Kaiju Fight",
   "url": "https://www.youtube.com/embed/6PblH2-3zb0",
   "description": "\"Kaiju Fight\" is an exhilarating battle game where players engage in epic clashes with monstrous AI opponents. In this heart-pounding gaming experience, both the player and AI-controlled monsters have progress bars. The key to victory lies in timing and precision. Players and AI opponents must tap at just the right moment to deliver a powerful Big hit. Success in these well-timed strikes is crucial for outmaneuvering opponents and securing victory. \"Kaiju Fight\" combines strategic timing, intense battles, and thrilling action, offering an immersive and adrenaline-pumping gaming adventure.",
-  "androidLink": "https://play.google.com/store/apps/details?id=com.redlinegames.kaijufight",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -185,7 +185,7 @@ const videoData =[
   "name": "KickEm",
   "url": "https://www.youtube.com/embed/LGgkUQCjKAc",
   "description": "\"KickEm\" is an unconventional and darkly humorous game where players are tasked with launching a character into obstacles to inflict damage and break various body parts. This unique and somewhat macabre concept adds a twist to traditional gaming experiences, as players strategically aim to cause havoc and destruction. The objective is clear: maximize the chaos by targeting obstacles and witnessing the comical consequences of broken body parts. \"KickEm\" provides a one-of-a-kind gaming adventure that combines dark humor, strategy, and playful destruction.",
-  "androidLink": "https://play.google.com/store/apps/details?id=com.redlinegames.kickem3d",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -221,7 +221,7 @@ const videoData =[
   "name": "Reverse Painting",
   "url": "https://www.youtube.com/embed/bQQGwju3-nQ",
   "description": "\"Reverse Painting\" offers a delightful and unique twist on the world of culinary creativity. In this enjoyable game, the goal is to create pancake art using a painting approach. Players can exercise their artistic skills by pouring pancake batter onto a griddle in intricate patterns and designs. As the pancake cooks, the artwork takes shape in reverse, making for a captivating and imaginative cooking adventure. \"Reverse Painting\" combines the joy of artistry with culinary expertise, promising a fun and delicious gaming experience for those looking to explore the world of edible art.",
-  "androidLink": "https://play.google.com/store/apps/details?id=com.redlinegames.reversepainting",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -230,7 +230,7 @@ const videoData =[
   "name": "Farmio",
   "url": "https://www.youtube.com/embed/w1JXdB9eGMg",
   "description": "\"Farmio\" is an engaging and strategic game where players take on the role of herbivorous creatures seeking to survive and thrive. In this captivating gaming experience, your objective is to eat grass and grow your group while simultaneously competing against AI-controlled groups. The challenge lies in strategically expanding your group's size and eliminating AI groups to establish dominance. \"Farmio\" combines elements of resource management, strategy, and competition, offering an immersive and dynamic gaming adventure in the world of survival and growth.",
-  "androidLink": "https://play.google.com/store/apps/details?id=farm.io.battle",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -257,7 +257,7 @@ const videoData =[
   "name": "Erase story",
   "url": "https://www.youtube.com/embed/CaAbiW_CA1E",
   "description": "\"Erase Story\" presents a unique and intriguing puzzle game where players must strategically erase unwanted elements from an image to reveal a meaningful and coherent picture. In this captivating gaming experience, your task is to use your precision and problem-solving skills to eliminate the unnecessary components, piece by piece, until the image forms a clear and comprehensible scene. \"Erase Story\" offers a challenging and engaging journey that combines creativity, attention to detail, and artistic sensibilities, making it an enjoyable and intellectually stimulating game for players looking for a visual puzzle challenge.",
-  "androidLink": "https://play.google.com/store/apps/details?id=com.redlinegames.erasestory",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -275,7 +275,7 @@ const videoData =[
   "name": "Quicktestfingure",
   "url": "https://www.youtube.com/embed/V85j3dMAl0M",
   "description": "\"Quicktestfingure\" is a fast-paced and precision-focused game where players must tap at just the right time to perfectly fit an image into a background picture. This game challenges players' timing and coordination skills as they strive to complete each level by aligning the image seamlessly with the background. With its quick reactions and attention to detail, \"Quicktestfingure\" offers a satisfying and engaging gaming experience for those seeking a test of their dexterity and quick thinking.",
-  "androidLink": "https://apps.apple.com/us/app/quickest-fingers/id1545351768",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -284,7 +284,7 @@ const videoData =[
   "name": "Epic Fall-",
   "url": "https://www.youtube.com/embed/fQRElQohpt4",
   "description": "\"Epic Fall\" is a thrilling and challenging game that plunges players into a world filled with obstacles. In this action-packed gaming experience, your objective is to strategically navigate through treacherous environments while avoiding being trapped by the obstacles. With each level presenting increasingly difficult challenges, \"Epic Fall\" tests your reflexes and decision-making skills as you strive to safely guide the character to the bottom without falling victim to the hazards. This game delivers an adrenaline-pumping and action-packed adventure, making it an epic journey for gamers seeking thrilling and heart-pounding experiences.",
-  "androidLink": "https://apps.apple.com/us/app/epic-fall/id1545332345",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -320,7 +320,7 @@ const videoData =[
   "name": "Magic Monsters 3D",
   "url": "https://www.youtube.com/embed/x7V9x7FC2J8",
   "description": "Defeat the monsters and use your magic powers to save the princess. Be careful of the giant dragon and its fire breath. Have fun!",
-  "androidLink": "https://play.google.com/store/apps/details?id=com.RedLineGames.MagicMonsters3D",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -329,7 +329,7 @@ const videoData =[
   "name": "MOWGLI JUMP - JUNGLE BOOK GAME",
   "url": "https://www.youtube.com/embed/j-XzNS8p0fM",
   "description": "An amazing gaming experience based on the characters from The Jungle Book.\nThe most innovative game on 'The Jungle Book'.\n\nTake a ride through the jungle river. Collect coins to unlock characters and use power-ups.\nSwim with Baloo, Jump over Crocodiles, Jump & slide on Kaa(Snake), Dodge Bandar(Monkey) attacks,\nClimb & Run on Hathi(Elephant) and Ride with Bagheera",
-  "androidLink": "http://igeniusdev.com/portfolio/mowgli-jump-jungle-book-game",
+  "androidLink": "null",
   "iosLink": "null"
  },
  {
@@ -338,8 +338,8 @@ const videoData =[
   "name": "Super hexa fit",
   "url": "https://www.youtube.com/embed/tJ9rvakvoi8",
   "description": "Block Puzzle is the exciting new puzzle game that everyone’s playing!\n\nEasy to play and pleasurable game for all age. Simply Drag the blocks, and fill up all grids.\n\nFrom now on, let's enjoy a simple\n\nAn achievements have also been added to challenge your friends, colleagues and circles.\n\nYou can also connect your Facebook to compete with your friends on Super Hexa Fit",
-  "androidLink": "https://itunes.apple.com/in/app/super-hexa-fit/id1111116865?mt=8",
-  "iosLink": "https://itunes.apple.com/in/app/super-hexa-fit/id1111116865?mt=8"
+  "androidLink": "null",
+  "iosLink": "null"
  },
  {
   "category": "Casual",
@@ -356,8 +356,8 @@ const videoData =[
   "name": "Flappy magic bird",
   "url": "https://www.youtube.com/embed/OpnO17-O0PU",
   "description": "Flappy Magic Bird : Go as far as you can avoiding pipes.",
-  "androidLink": "https://itunes.apple.com/in/app/flappy-magic-bird/id1004543881?mt=8",
-  "iosLink": "https://itunes.apple.com/in/app/flappy-magic-bird/id1004543881?mt=8"
+  "androidLink": "null",
+  "iosLink": "null"
  },
  {
   "category": "Casual",
@@ -365,8 +365,8 @@ const videoData =[
   "name": "SANTA'S SLAY™ - CHRISTMAS GAME",
   "url": "https://www.youtube.com/embed/I1t3fxI7m-4",
   "description": "Legend tells of a Legendary Warrior living on top of a Snow capped mountain, guardian to the innocent, children & the Mountain Village.\n\nIt’s CHRISTMAS SEASON and the Mountain Village is haunted by Dark souled animals & Kallikantzaroi creatures. Now, you are bestowed with the legacy of the legend Saint Nicholas a.k.a. Santa Claus.\n\n* Guard the Mountain Village\n* Collect the Golden Snowflakes that the Gods send from sky for future upgrades\n* Kill the Dark Creatures while sliding on the snow (Swipe to Right & Slash)\n\nIn this release you’ll get to explore the Mountain ridge area during the Dawn, coming soon in the next update you’ll get More locations during the day, evening and night; more upgrades like Advanced Weapons, Snowboards, etc. and More dangerous Enemies. Experience this beginning of SANTA’s SLAY™ adventure and await for the update coming soon.",
-  "androidLink": "http://igeniusdev.com/portfolio/santas-slay-christmas-game",
-  "iosLink": "http://igeniusdev.com/portfolio/santas-slay-christmas-game"
+  "androidLink": "null",
+  "iosLink": "null"
  },
  {
   "category": "Other",

@@ -15,10 +15,12 @@
              '\'': '\\\'',
              '\"': '\\\"',
              '\\': '\\\\',
+             '<': '&#60;',
+             '>': '&#62;;'
            };
          
            // Use .replace() with a callback function to perform the replacements
-           const escapedString = inputString.replace(/[\t\v\0\b\f\n\r'"]/g, (match) => {
+           const escapedString = inputString.replace(/[\t\v\0\b\f\n\r<>'"]/g, (match) => {
              return escapeMap[match];
            });
          
