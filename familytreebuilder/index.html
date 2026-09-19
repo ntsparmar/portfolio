@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Family Tree Designer - Node Opacity 0-100 Fixed</title>
+<style>
+:root{--panel:#17191f;--panel2:#20232b;--bg:#0d0f13;--text:#f3f4f6;--muted:#9ca3af;--accent:#d7b56d}
+*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);overflow:hidden}
+button,input,select{font:inherit}button{cursor:pointer}
+.app{height:100%;display:grid;grid-template-rows:58px 1fr}
+.toolbar{display:flex;align-items:center;gap:8px;padding:8px 12px;background:#14161b;border-bottom:1px solid #2b2f38;z-index:20}
+.logo{font-weight:800;margin-right:12px;letter-spacing:.4px}.logo span{color:var(--accent)}
+.btn{background:#252933;color:#eee;border:1px solid #363b46;border-radius:7px;padding:8px 11px}
+.btn:hover{background:#303541}.primary{background:#9e7a37;border-color:#b89148;color:white}.danger{background:#5c2428;border-color:#8a3b40}
+.spacer{flex:1}.status{font-size:12px;color:var(--muted)}
+.workspace{display:grid;grid-template-columns:250px 1fr 285px;min-height:0}
+.sidebar,.inspector{background:var(--panel);overflow:auto;padding:14px;border-right:1px solid #2b2f38}.inspector{border-right:0;border-left:1px solid #2b2f38}
+h3{font-size:13px;margin:5px 0 12px;color:#ddd;text-transform:uppercase;letter-spacing:1px}
+.group{border-bottom:1px solid #2a2e36;padding-bottom:14px;margin-bottom:14px}
+label{display:block;font-size:12px;color:#aaa;margin:8px 0 5px}
+input[type=text],input[type=number],select{width:100%;background:#101217;border:1px solid #343945;color:#eee;border-radius:6px;padding:7px}
+input[type=color]{width:100%;height:34px;background:#101217;border:1px solid #343945;border-radius:6px;padding:3px}
+input[type=range]{width:100%}.row{display:flex;gap:7px}.row>*{flex:1}
+.help{font-size:11px;color:#858b96;line-height:1.45}
+.canvas-wrap{position:relative;overflow:hidden;background:#090b0f}
+#viewport{position:absolute;inset:0;overflow:hidden;cursor:grab}
+#viewport.grabbing{cursor:grabbing}
+#stage{position:absolute;width:1600px;height:1000px;transform-origin:0 0}
+#canvasBg{position:absolute;inset:0;background-color:#10131a;background-image:linear-gradient(135deg,#10131a,#08090c);background-position:center;background-repeat:no-repeat;background-size:cover;border:1px solid #252a33;overflow:hidden}
+#canvasBg:after{content:"";position:absolute;inset:0;background:inherit;opacity:var(--bg-photo-opacity,0);z-index:0}
+#lines,#nodes{z-index:2}
+#lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:auto;overflow:visible;z-index:2}
+#nodes{position:absolute;inset:0;z-index:3;pointer-events:none}
+.node{pointer-events:auto}
+.node{position:absolute;width:150px;min-height:10px;background:#1c2028;border:2px solid #c7a45c;border-radius:14px;box-shadow:0 8px 24px #0008;display:flex;flex-direction:column;align-items:center;padding:10px;user-select:none;cursor:move}
+.node.selected{outline:2px solid #fff;outline-offset:3px}.node .photo{width:100px;height:100px;object-fit:cover;background:#30343c;border:5px solid #c7a45c;box-shadow:0 0 0 2px #0008;display:block}
+.node .name{font-weight:700;text-align:center;margin-top:8px;word-break:break-word}.node .role{font-size:11px;color:#9da3ad;margin-top:3px}
+.node.circle .photo{border-radius:50%}.node.rounded .photo{border-radius:18px}.node.square .photo{border-radius:2px}.node.hex .photo{clip-path:polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);border:0}.node.diamond .photo{transform:rotate(45deg);width:76px;height:76px;margin:12px}.node.diamond{padding-top:22px}.node.diamond .name{margin-top:15px}
+.handle{position:absolute;width:14px;height:14px;border-radius:50%;background:#fff;border:2px solid #222;opacity:0;transition:.15s;z-index:5}.node:hover .handle,.node.selected .handle{opacity:1}.handle{opacity:0}.node:hover .handle,.node.selected .handle{opacity:1}
+.handle.top{top:-7px;left:50%;cursor:crosshair}
+.handle.right{right:-7px;top:50%;cursor:crosshair}
+.handle.bottom{bottom:-7px;left:50%;cursor:crosshair}
+.handle.left{left:-7px;top:50%;cursor:crosshair}
+.empty{height:100%;display:flex;align-items:center;justify-content:center;color:#6f7682;font-size:14px;pointer-events:none}
+.zoom{position:absolute;bottom:14px;left:14px;z-index:10;background:#161920dd;border:1px solid #333944;border-radius:8px;padding:6px}
+.zoom button{border:0;background:none;color:#ddd;padding:5px 9px}.zoom span{font-size:12px;color:#aaa}
+.connection{stroke:#d7b56d;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#bgPhotoLayer{position:absolute;inset:0;background-position:center;background-repeat:no-repeat;background-size:cover;pointer-events:none}
+.connection.spouse{stroke-dasharray:9 6}.connection.selected{stroke:#fff}
+.context-note{position:absolute;bottom:14px;right:14px;background:#161920dd;border:1px solid #333944;padding:7px 10px;border-radius:8px;color:#9da3ad;font-size:11px}
+#fileInput{display:none}.hidden{display:none}
+@media(max-width:900px){.workspace{grid-template-columns:190px 1fr}.inspector{display:none}}
+
+.opacity-side-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}
+.opacity-side-control{min-width:0}
+.opacity-side-control label{display:block}
+.opacity-side-control input[type="range"]{width:100%}
+@media(max-width:560px){.opacity-side-row{grid-template-columns:1fr}}
+
+.node .role{white-space:pre-line;overflow-wrap:anywhere;}
+</style>
+<style id="node-customization-checked-style">
+#nodeCustomizationPanel{display:block!important;visibility:visible!important;opacity:1!important}
+#nodeCustomizationPanel label{display:block;margin:7px 0}
+#nodeCustomizationPanel input[type="color"]{vertical-align:middle}
+#nodeCustomizationPanel input[type="range"]{width:150px;vertical-align:middle}
+#nodeCustomizationPanel h3,#nodeCustomizationPanel h4{display:block!important}
+</style>
+<style id="inspector-customization-final-v8">
+#nodeCustomizationPanel{display:block!important;margin:14px 0!important;padding:12px!important;border:1px solid #3b404b!important;border-radius:8px!important;background:rgba(255,255,255,.025)!important}
+#nodeCustomizationPanel h3{margin-top:0}
+#nodeCustomizationPanel h4{margin:14px 0 7px}
+#nodeCustomizationPanel label{display:block;margin:8px 0}
+#nodeCustomizationPanel .check-row{display:flex!important;align-items:center;gap:8px;cursor:pointer}
+#nodeCustomizationPanel input[type="checkbox"]{width:18px;height:18px}
+#nodeCustomizationPanel input[type="color"]{width:48px;height:30px;padding:0}
+#nodeCustomizationPanel input[type="range"]{width:100%}
+</style>
+<style id="hidden-people-v9-style">
+#hiddenPeopleBox button:hover{filter:brightness(1.15)}
+#hiddenPeopleList:empty{display:none!important}
+</style>
+<style id="name-photo-opacity-v12">
+#nodeCustomizationPanel input[type="range"]{width:100%}
+</style>
+<style id="node-shadow-opacity-v13">
+#nodeCustomizationPanel input[type="range"]{width:100%}
+</style>
+<style id="node-bg-frame-rechecked">
+#nodes .node{box-sizing:border-box;background-clip:border-box}
+</style><style id="menu-layout-v16">.menu-section{margin:0 0 12px;padding:12px;border:1px solid #333944;border-radius:9px;background:rgba(255,255,255,.02)}.menu-section>h4{margin:0 0 9px;font-size:13px;color:#e6e9ee}.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}.menu-grid>div{min-width:0}.menu-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.menu-actions button{margin-top:0!important}.menu-actions .wide{grid-column:1/-1}.inspector .menu-section input[type=range]{width:100%}.toolbar .toolbar-group{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.toolbar .toolbar-group+.toolbar-group{margin-left:6px}@media(max-width:560px){.menu-grid,.menu-actions{grid-template-columns:1fr}.menu-actions .wide{grid-column:auto}}</style></head>
+<body>
+<div class="app">
+<header class="toolbar">
+<div class="logo">Family <span>Tree</span> Designer</div>
+<input accept="application/json" id="fileInput" type="file"/>
+<div class="toolbar-group" title="Build"><button class="btn primary" id="addBtn">＋ Person</button><button class="btn" id="connectBtn">🔗 Connect</button></div><div class="toolbar-group" title="Arrange &amp; Animate"><button class="btn" id="arrangeBtn">Auto Arrange</button><button class="btn" id="animateBtn">▶ Animate</button></div><div class="toolbar-group" title="File"><button class="btn" id="saveBtn">Save</button><button class="btn" id="loadBtn">Load</button><button class="btn" id="exportBtn">Export PNG</button></div><div class="spacer"></div><div class="status" id="status">Ready</div>
+</header>
+<section class="workspace">
+<aside class="sidebar">
+<div class="group">
+<h3>Canvas &amp; Background</h3>
+<label>Aspect Ratio</label>
+<select id="aspect">
+<option value="16:9">16:9 Landscape</option>
+<option value="9:16">9:16 Portrait</option>
+<option value="4:5">4:5 Portrait</option>
+<option value="1:1">1:1 Square</option>
+</select>
+<label>Background Type</label>
+<div class="row">
+<button class="btn primary" id="bgColorMode">Color</button>
+<button class="btn" id="bgImageMode">Image</button>
+</div>
+<div id="bgColorControls">
+<label>Background Color</label>
+<input id="bgColor" type="color" value="#10131a"/>
+</div>
+<div class="hidden" id="bgImageControls">
+<label>Background Photo</label>
+<button class="btn" id="bgPhotoBtn" style="width:100%">Upload Background Photo</button>
+<input accept="image/*" id="bgPhotoInput" style="display:none" type="file"/>
+<label>Photo Opacity <span id="bgOpacityVal">35%</span></label>
+<input id="bgOpacity" max="100" min="0" step="1" type="range" value="35"/>
+<label>Photo Fit</label>
+<select id="bgFit">
+<option value="cover">Cover</option>
+<option value="contain">Contain</option>
+<option value="stretch">Stretch</option>
+</select>
+<label>Photo Position</label>
+<select id="bgPosition">
+<option value="center">Center</option>
+<option value="top">Top</option>
+<option value="bottom">Bottom</option>
+<option value="left">Left</option>
+<option value="right">Right</option>
+</select>
+<button class="btn" id="bgPhotoClear" style="width:100%;margin-top:7px">Clear Background Photo</button>
+</div>
+</div>
+<div class="group">
+<h3>Quick Start</h3>
+<button class="btn" id="demoBtn" style="width:100%">Create Demo Family</button>
+<p class="help">Drag people with the mouse. Select a person to edit it. Use Connect, then click two people to create a parent/child line. Node Height and background photo are customizable from the side panels.</p>
+</div>
+<div class="group">
+<h3>View &amp; Shortcuts</h3>
+<p class="help">• Mouse wheel: zoom<br/>• Middle mouse / Space + drag: pan<br/>• Delete: remove selected item<br/>• Escape: cancel connection<br/>• Double-click a person: edit name</p>
+</div>
+</aside>
+<main class="canvas-wrap">
+<div id="viewport">
+<div id="stage">
+<div id="canvasBg"><div id="bgPhotoLayer"></div></div>
+<svg id="lines"></svg>
+<div id="nodes"></div>
+<div class="empty" id="empty">Click “＋ Person” or “Create Demo Family”</div>
+</div>
+</div>
+<div class="zoom"><button id="zoomOut">−</button><span id="zoomLabel">100%</span><button id="zoomIn">＋</button><button id="zoomReset">Reset</button></div>
+<div class="context-note" id="modeNote">Drag nodes • Wheel zoom • Space+drag pan</div>
+</main>
+<aside class="inspector">
+<div id="noSelection">
+<h3>Inspector</h3><p class="help">Select a person or connection to customize it.</p>
+</div>
+<div class="hidden" id="personInspector"><h3>Person</h3><div class="menu-section"><h4>Person Details</h4><label>Name</label><input id="pName" type="text"/><label>Role / Note</label><input id="pRole" type="text"/><label>Photo</label><button class="btn" id="photoBtn" style="width:100%">Upload Photo</button><input accept="image/*" id="photoInput" type="file" style="display:none"></div><div class="menu-section"><h4>Frame &amp; Photo</h4>
+<div class="opacity-side-control">
+<label>Photo Opacity
+      <input id="photoOpacity" max="100" min="0" step="1" type="range" value="100"/>
+<span id="photoOpacityVal">100%</span>
+</label>
+</div><div class="row"><div><label>Frame</label><select id="frame"><option value="circle">Circle</option><option value="rounded">Rounded</option><option value="square">Square</option><option value="hex">Hexagon</option><option value="diamond">Diamond</option></select></div><div><label>Frame Color</label><input id="frameColor" type="color" value="#c7a45c"/></div></div><label>Frame Thickness <span id="thickVal"></span></label><input id="frameThickness" max="15" min="0" type="range" value="5"/><label>Photo Size <span id="sizeVal"></span></label><input id="photoSize" max="140" min="50" type="range" value="100"/></div><div class="menu-section"><h4>Name Styling</h4><div class="opacity-side-row">
+<div class="opacity-side-control">
+<label>Name Opacity
+      <input id="nameOpacity" max="100" min="0" step="1" type="range" value="100"/>
+<span id="nameOpacityVal">100%</span>
+</label>
+</div>
+
+</div><label>Name Color</label><input id="nameColor" type="color" value="#ffffff"/><label>Name Size</label><input id="nameSize" max="28" min="10" type="range" value="16"/></div><div class="menu-section"><h4>Role / Note Styling</h4><div id="roleNoteStyleSection" style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.12)">
+<div style="font-weight:700;font-size:12px;margin-bottom:7px">Role / Note Customization</div>
+<label>Role/Note Opacity
+    <input id="roleOpacity" max="100" min="0" step="1" type="range" value="100"/>
+<span id="roleOpacityVal">100%</span>
+</label>
+<label>Role/Note Color</label>
+<input id="roleColor" type="color" value="#aeb7c6"/>
+<label>Role/Note Size
+    <span id="roleSizeVal">12px</span>
+</label>
+<input id="roleSize" max="28" min="8" step="1" type="range" value="12"/>
+</div></div><div class="menu-section"><h4>Animation &amp; Visibility</h4><label>Member Animation Index</label><input id="memberAnimationIndex" min="1" step="1" type="number" value="1"/><p class="help">Controls exactly when this member appears during ▶ Animate.</p><div id="hiddenPeopleBox" style="margin:10px 0 12px;padding:9px;border:1px solid #3b404b;border-radius:7px;">
+<div style="font-weight:700;margin-bottom:7px;">Show Hidden People</div>
+<div id="hiddenPeopleList" style="display:flex;flex-direction:column;gap:5px;"></div>
+<div id="noHiddenPeople" style="font-size:12px;opacity:.65;">No hidden people</div>
+</div><label class="check-row">
+<input id="nodeHidePerson" type="checkbox"/>
+<span>Hide Full Person</span>
+</label></div><div class="menu-section"><h4>Node Background</h4><div class="control-group" id="nodeCustomizationPanel" style="display:block!important;">
+<h3>Node Settings</h3>
+<h4>Dimensions</h4>
+<label>Card Width <span id="cardVal"></span></label>
+<input id="cardWidth" max="500" min="10" type="range" value="150"/>
+<label>Node Height <span id="heightVal"></span></label>
+<input id="nodeHeight" max="500" min="10" type="range" value="160"/>
+<label>Node Shadow Opacity
+    <input id="nodeShadowOpacity" max="100" min="0" step="1" type="range" value="100"/>
+    <span id="nodeShadowOpacityVal">100%</span>
+</label>
+</div><h4>Node Background</h4><label>Background Color
+    <input id="nodeBgColor" type="color" value="#ffffff"/>
+</label><label>Background Opacity
+    <input id="nodeBgOpacity" max="100" min="0" step="1" type="range" value="100"/>
+<span id="nodeBgOpacityVal">1.00</span>
+</label></div><div class="menu-section"><h4>Node Frame</h4><label>Frame Color
+    <input id="nodeFrameColor" type="color" value="#d4af37"/>
+</label><label>Frame Opacity
+    <input id="nodeFrameOpacity" max="100" min="0" step="1" type="range" value="100"/>
+<span id="nodeFrameOpacityVal">1.00</span>
+</label><label>Frame Thickness
+    <input id="nodeFrameThickness" max="15" min="0" step="1" type="range" value="2"/>
+<span id="nodeFrameThicknessVal">2px</span>
+</label></div><div class="menu-section"><h4>Actions</h4><div class="menu-actions"><button class="btn" id="duplicatePerson" style="width:100%;margin-top:12px">
+  Duplicate Member
+</button><button class="btn danger" id="deletePerson" style="width:100%;margin-top:12px">Delete Person</button></div></div></div>
+<div class="hidden" id="lineInspector"><h3>Connection</h3><p class="help">Every node has 4 connection dots: Top, Right, Bottom and Left. Select a connection and choose exactly which dot it starts/ends on.</p><div class="menu-section"><h4>Connection Setup</h4><label>Select Connection</label><select id="linePicker"></select><label>Relationship</label><select id="relationshipType"><option value="parent">Parent → Child</option><option value="spouse">Spouse</option><option value="sibling">Sibling</option></select><div class="row">
+<div><label>From Side</label><select id="fromSide"><option value="top">Top</option><option value="right">Right</option><option value="bottom">Bottom</option><option value="left">Left</option></select></div>
+<div><label>To Side</label><select id="toSide"><option value="top">Top</option><option value="right">Right</option><option value="bottom">Bottom</option><option value="left">Left</option></select></div>
+</div></div><div class="menu-section"><h4>Line Style</h4><label>Line Type</label><select id="lineType"><option value="linear">Linear</option><option value="bezier">Bezier</option><option value="elbow">Elbow / Orthogonal</option><option value="curved">Curved</option></select><div id="bezierControls">
+<label>Curve Strength <span id="curveVal">60</span></label>
+<input id="curveStrength" max="200" min="0" type="range" value="60"/>
+</div><label>Line Color</label><input id="lineColor" type="color" value="#d7b56d"/><label>Line Width <span id="lineWidthVal"></span></label><input id="lineWidth" max="20" min="1" type="range" value="5"/><label>Line Height / Offset <span id="lineHeightVal"></span></label><input id="lineHeight" max="200" min="0" type="range" value="60"/><label>Animation Speed <span id="lineSpeedVal"></span></label><input id="lineSpeed" max="3" min=".1" step=".1" type="range" value="1"/></div><div class="menu-section"><h4>Animation</h4><label>Line Animation Index</label><input id="lineAnimationIndex" min="1" step="1" type="number" value="1"/><p class="help">Controls exactly when this line draws during ▶ Animate. Same index = simultaneous.</p></div><div class="menu-section"><h4>Connection Actions</h4><div class="menu-actions"><button class="btn" id="animateLine" style="width:100%;margin-top:12px">Animate Line</button><button class="btn" id="selectLineBtn" style="width:100%;margin-top:8px">Select Another Line</button><button class="btn danger" id="deleteLine" style="width:100%;margin-top:8px">Delete Connection</button></div></div></div></aside></section></div>
+<script>
+const $=id=>document.getElementById(id);
+const state={nodes:[],lines:[],selected:null,connectMode:false,nextId:1,zoom:1,panX:40,panY:40,aspect:"16:9",bgColor:"#10131a",bgPhoto:null,bgOpacity:35,bgFit:"cover",bgPosition:"center",bgMode:"color"};
+let dragging=null, dragDX=0,dragDY=0, panning=false, panSX=0,panSY=0, startPX=0,startPY=0, currentConnectFrom=null;
+
+function uid(){return "n"+state.nextId++}
+function nodeBy(id){return state.nodes.find(n=>n.id===id)}
+function lineBy(id){return state.lines.find(l=>l.id===id)}
+
+function setStatus(t){$("status").textContent=t}
+function render(){
+  $("nodes").innerHTML=""; $("lines").innerHTML="";
+  $("empty").style.display=state.nodes.length?"none":"flex";
+  state.nodes.forEach(n=>{
+    const d=document.createElement("div");
+    d.className="node "+n.frame+(state.selected?.kind==="node"&&state.selected.id===n.id?" selected":"");
+    d.dataset.id=n.id;
+    d.style.left=n.x+"px";
+    d.style.top=n.y+"px";
+    d.style.width=n.cardWidth+"px";
+    d.style.height=(n.nodeHeight??160)+"px";
+
+    // Authoritative node/card background and frame styling.
+    const bgColor=n.nodeBgColor || "#1c2028";
+    const bgOpacity=n.nodeBgOpacity==null ? 100 : Number(n.nodeBgOpacity==null?100:n.nodeBgOpacity);
+    const frameColor=n.nodeFrameColor || "#c7a45c";
+    const frameOpacity=n.nodeFrameOpacity==null ? 100 : Number(n.nodeFrameOpacity==null?100:n.nodeFrameOpacity);
+    const frameThickness=n.nodeFrameThickness==null ? 2 : Number(n.nodeFrameThickness);
+    d.style.backgroundColor=hexToRgba(bgColor,bgOpacity/100);
+    d.style.borderStyle="solid";
+    d.style.borderColor=hexToRgba(frameColor,frameOpacity/100);
+    d.style.borderWidth=Math.max(0,frameThickness)+"px";
+    d.style.height=(n.nodeHeight??160)+"px";
+
+    // Node/card customization.
+    const nodeBg = n.nodeBgColor || n.bgColor || "#1c2028";
+    const nodeBgOpacity = n.nodeBgOpacity==null ? (n.bgOpacity==null ? 100 : n.bgOpacity) : n.nodeBgOpacity;
+    const nodeFrame = n.nodeFrameColor || n.cardFrameColor || "#c7a45c";
+    const nodeFrameOpacity = n.nodeFrameOpacity==null ? (n.cardFrameOpacity==null ? 100 : n.cardFrameOpacity) : n.nodeFrameOpacity;
+    const nodeFrameThickness = n.nodeFrameThickness==null ? 2 : n.nodeFrameThickness;
+
+    d.style.backgroundColor=hexToRgba(nodeBg, Number(nodeBgOpacity)/100);
+    d.style.borderStyle="solid";
+    d.style.borderColor=hexToRgba(nodeFrame, Number(nodeFrameOpacity)/100);
+    d.style.borderWidth=Math.max(0,Number(nodeFrameThickness))+"px";
+    const shadowOpacity = n.nodeShadowOpacity==null ? 100 : Number(n.nodeShadowOpacity);
+    d.style.boxShadow = shadowOpacity <= 0
+      ? "none"
+      : "0 8px 22px rgba(0,0,0,"+(Math.max(0,Math.min(100,shadowOpacity))/100)+")";
+
+    d.innerHTML=`<div class="handle top" data-side="top"></div><div class="handle right" data-side="right"></div><div class="handle bottom" data-side="bottom"></div><div class="handle left" data-side="left"></div><img class="photo" src="${n.photo||placeholder()}" draggable="false"><div class="name">${esc(n.name)}</div><div class="role">${esc(n.role||"")}</div>`;
+
+    const img=d.querySelector(".photo");
+    img.style.width=n.photoSize+"px";
+    img.style.opacity=(n.photoOpacity==null?100:Number(n.photoOpacity))/100;
+    img.style.height=n.photoSize+"px";
+    img.style.borderColor=n.frameColor || "#c7a45c";
+    img.style.borderWidth=(n.frameThickness??5)+"px";
+
+    d.querySelector(".name").style.color=n.nameColor || "#ffffff";
+    d.querySelector(".name").style.opacity=(n.nameOpacity==null?100:Number(n.nameOpacity))/100;
+    d.querySelector(".name").style.fontSize=(n.nameSize==null?16:Number(n.nameSize))+"px";
+
+    // Role / Note uses the actual ".role" element rendered above.
+    // Apply color, opacity and size directly to the element so these
+    // controls cannot be overridden by the generic node CSS.
+    const roleEl=d.querySelector(".role");
+    if(roleEl){
+      const roleColor=n.roleColor || "#aeb7c6";
+      const roleOpacity=n.roleOpacity==null ? 100 : Number(n.roleOpacity);
+      const roleSize=n.roleSize==null ? 12 : Number(n.roleSize);
+      roleEl.style.setProperty("color",roleColor,"important");
+      roleEl.style.setProperty("opacity",String(Math.max(0,Math.min(100,roleOpacity))/100),"important");
+      roleEl.style.setProperty("font-size",Math.max(8,Math.min(28,roleSize))+"px","important");
+      roleEl.style.setProperty("white-space","pre-line");
+      roleEl.style.setProperty("overflow-wrap","anywhere");
+    }
+
+    // Hide only the visual person/card. Data, relationships and animation indexes remain.
+    if(n.hidden || n.hidePerson){
+      d.style.display="none";
+      d.dataset.personHidden="true";
+    }
+
+    d.addEventListener("mousedown",nodeDown);
+    d.addEventListener("dblclick",()=>{const v=prompt("Person name:",n.name);if(v!==null){n.name=v;render();}});
+    $("nodes").appendChild(d);
+  });
+  state.lines.forEach(l=>drawLine(l));
+  updateInspector(); applyTransform();
+}
+function hexToRgba(hex,alpha){
+  const h=String(hex||"").replace("#","");
+  if(h.length!==6)return hex;
+  const r=parseInt(h.slice(0,2),16),g=parseInt(h.slice(2,4),16),b=parseInt(h.slice(4,6),16);
+  return `rgba(${r},${g},${b},${Math.max(0,Math.min(1,alpha))})`;
+}
+function placeholder(){
+ return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="100%" height="100%" fill="#30343c"/><text x="50%" y="52%" fill="#9aa1ad" font-size="24" text-anchor="middle">PHOTO</text></svg>`);
+}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+
+function nodeDown(e){
+ if(e.button!==0)return;
+ const id=e.currentTarget.dataset.id, n=nodeBy(id);
+ if(state.connectMode){
+   if(!currentConnectFrom){currentConnectFrom=id;setStatus("Now click the child/spouse person.");return}
+   if(currentConnectFrom!==id){state.lines.push({id:"l"+Date.now(),from:currentConnectFrom,to:id,relationship:"parent",type:"bezier",color:"#d7b56d",width:5,height:60,speed:1,curveStrength:60,fromSide:"bottom",toSide:"top"});}
+   state.connectMode=false;currentConnectFrom=null;render();setStatus("Connection created");return;
+ }
+ state.selected={kind:"node",id}; dragging=id;
+ const r=e.currentTarget.getBoundingClientRect();
+ dragDX=(e.clientX-r.left)/state.zoom;dragDY=(e.clientY-r.top)/state.zoom;
+ render();
+}
+function anchorPoint(n,side){
+ const w=n.cardWidth,h=n.nodeHeight??160;
+ if(side==="top") return {x:n.x+w/2,y:n.y};
+ if(side==="right") return {x:n.x+w,y:n.y+h/2};
+ if(side==="left") return {x:n.x,y:n.y+h/2};
+ return {x:n.x+w/2,y:n.y+h};
+}
+function drawLine(l){
+ const a=nodeBy(l.from),b=nodeBy(l.to);if(!a||!b)return;
+ const p1=anchorPoint(a,l.fromSide||"bottom"),p2=anchorPoint(b,l.toSide||"top");
+ const x1=p1.x,y1=p1.y,x2=p2.x,y2=p2.y,type=l.type||"bezier",ss=Number(l.curveStrength??60),h=Number(l.height??60);
+ let d;
+ if(type==="linear") d=`M ${x1} ${y1} L ${x2} ${y2}`;
+ else if(type==="elbow"){
+   const vertical=(l.fromSide==="top"||l.fromSide==="bottom")&&(l.toSide==="top"||l.toSide==="bottom");
+   if(vertical){const my=(y1+y2)/2+h/4;d=`M ${x1} ${y1} L ${x1} ${my} L ${x2} ${my} L ${x2} ${y2}`;}
+   else {const mx=(x1+x2)/2;d=`M ${x1} ${y1} L ${mx} ${y1} L ${mx} ${y2} L ${x2} ${y2}`;}
+ }else if(type==="curved"){
+   const vertical=(l.fromSide==="top"||l.fromSide==="bottom");
+   if(vertical)d=`M ${x1} ${y1} Q ${(x1+x2)/2} ${y1+(y2>=y1?ss:-ss)} ${x2} ${y2}`;
+   else d=`M ${x1} ${y1} Q ${x1+(x2>=x1?ss:-ss)} ${(y1+y2)/2} ${x2} ${y2}`;
+ }else{
+   const vertical=(l.fromSide==="top"||l.fromSide==="bottom");
+   if(vertical){const my=(y1+y2)/2+h/4;d=`M ${x1} ${y1} C ${x1} ${my-ss/2}, ${x2} ${my+ss/2}, ${x2} ${y2}`;}
+   else {const mx=(x1+x2)/2;d=`M ${x1} ${y1} C ${mx-ss/2} ${y1}, ${mx+ss/2} ${y2}, ${x2} ${y2}`;}
+ }
+ const hit=document.createElementNS("http://www.w3.org/2000/svg","path");
+ hit.setAttribute("d",d);hit.setAttribute("fill","none");hit.setAttribute("stroke","transparent");hit.setAttribute("stroke-width",Math.max(18,Number(l.width)+12));hit.style.pointerEvents="stroke";hit.style.cursor="pointer";hit.dataset.id=l.id;
+ hit.addEventListener("mousedown",e=>{e.stopPropagation();state.selected={kind:"line",id:l.id};state.connectMode=false;currentConnectFrom=null;render();setStatus("Connection selected — customize it on the right")});
+ $("lines").appendChild(hit);
+ const path=document.createElementNS("http://www.w3.org/2000/svg","path");path.classList.add("connection");if(l.relationship==="spouse")path.classList.add("spouse");
+ if(state.selected?.kind==="line"&&state.selected.id===l.id)path.classList.add("selected");
+ path.setAttribute("d",d);path.dataset.id=l.id;path.style.stroke=l.color;path.style.strokeWidth=l.width;path.style.pointerEvents="none";$("lines").appendChild(path);
+}
+function updateInspector(){
+ const ps=$("personInspector"),ls=$("lineInspector"),none=$("noSelection");
+ ps.classList.add("hidden");ls.classList.add("hidden");none.classList.remove("hidden");
+ if(!state.selected)return; none.classList.add("hidden");
+ if(state.selected.kind==="node"){
+   ps.classList.remove("hidden");
+   const n=nodeBy(state.selected.id);
+
+   $("pName").value=n.name;
+   $("pRole").value=n.role;
+   $("frame").value=n.frame;
+   $("frameColor").value=n.frameColor||"#c7a45c";
+   $("frameThickness").value=n.frameThickness??5;
+   $("photoSize").value=n.photoSize;
+   $("cardWidth").value=n.cardWidth;
+   $("nodeHeight").value=n.nodeHeight??160;
+   $("nameColor").value=n.nameColor;
+   $("nameSize").value=n.nameSize;
+   $("roleColor").value=n.roleColor||"#aeb7c6";
+   $("roleOpacity").value=n.roleOpacity==null?100:n.roleOpacity;
+   $("roleOpacityVal").textContent=(n.roleOpacity==null?100:n.roleOpacity)+"%";
+   $("roleSize").value=n.roleSize==null?12:n.roleSize;
+   $("roleSizeVal").textContent=(n.roleSize==null?12:n.roleSize)+"px";
+
+   $("nameOpacity").value=n.nameOpacity==null?100:n.nameOpacity;
+   $("photoOpacity").value=n.photoOpacity==null?100:n.photoOpacity;
+   $("nameOpacityVal").textContent=(n.nameOpacity==null?100:n.nameOpacity)+"%";
+   $("photoOpacityVal").textContent=(n.photoOpacity==null?100:n.photoOpacity)+"%";
+   $("memberAnimationIndex").value=n.animationIndex??1;
+
+   $("nodeHidePerson").checked=!!(n.hidden||n.hidePerson);
+   $("nodeBgColor").value=n.nodeBgColor||"#1c2028";
+   $("nodeBgOpacity").value=n.nodeBgOpacity==null?100:n.nodeBgOpacity;
+   $("nodeFrameColor").value=n.nodeFrameColor||"#c7a45c";
+   $("nodeFrameOpacity").value=n.nodeFrameOpacity==null?100:n.nodeFrameOpacity;
+   $("nodeFrameThickness").value=n.nodeFrameThickness==null?2:n.nodeFrameThickness;
+   $("nodeShadowOpacity").value=n.nodeShadowOpacity==null?100:n.nodeShadowOpacity;
+   $("nodeShadowOpacityVal").textContent=(n.nodeShadowOpacity==null?100:n.nodeShadowOpacity)+"%";
+
+   $("thickVal").textContent=n.frameThickness??5;
+   $("sizeVal").textContent=n.photoSize;
+   $("cardVal").textContent=n.cardWidth;
+   $("heightVal").textContent=n.nodeHeight??160;
+   $("nodeBgOpacityVal").textContent=(n.nodeBgOpacity==null?100:n.nodeBgOpacity)+"%";
+   $("nodeFrameOpacityVal").textContent=(n.nodeFrameOpacity==null?100:n.nodeFrameOpacity)+"%";
+   $("nodeFrameThicknessVal").textContent=(n.nodeFrameThickness==null?2:n.nodeFrameThickness)+"px";
+ }else{
+   ls.classList.remove("hidden");
+   const picker=$("linePicker");picker.innerHTML="";
+   state.lines.forEach((ln,i)=>{const opt=document.createElement("option");opt.value=ln.id;opt.textContent=`${i+1}. ${ln.relationship||"parent"} • ${ln.type||"bezier"}`;picker.appendChild(opt)});
+   picker.value=state.selected.id;
+   const l=lineBy(state.selected.id);
+   $("relationshipType").value=l.relationship||"parent";$("fromSide").value=l.fromSide||"bottom";$("toSide").value=l.toSide||"top";$("lineType").value=l.type||"bezier";$("lineColor").value=l.color;$("lineWidth").value=l.width;$("lineHeight").value=l.height??60;$("lineSpeed").value=l.speed??1;$("curveStrength").value=l.curveStrength??60;$("lineAnimationIndex").value=l.animationIndex??1;
+   $("lineWidthVal").textContent=l.width;$("lineHeightVal").textContent=l.height??60;$("lineSpeedVal").textContent=l.speed??1;$("curveVal").textContent=l.curveStrength??60;
+   $("bezierControls").style.display=(l.type==="bezier"||l.type==="curved")?"block":"none";
+ }
+}
+function applyTransform(){$("stage").style.transform=`translate(${state.panX}px,${state.panY}px) scale(${state.zoom})`;$("zoomLabel").textContent=Math.round(state.zoom*100)+"%"}
+$("addBtn").onclick=()=>{const n={id:uid(),name:"New Member",role:"",roleColor:"#aeb7c6",roleOpacity:100,roleSize:12,x:180+state.nodes.length*30,y:160+state.nodes.length*20,photo:null,frame:"circle",frameColor:"#c7a45c",frameThickness:5,photoSize:100,cardWidth:150,nodeHeight:160,nameColor:"#ffffff",nameSize:16,animationIndex:1,nodeFrameColor:"#c7a45c",nodeFrameOpacity:100,nodeFrameThickness:2,nodeBgColor:"#1c2028",nodeBgOpacity:100,hidden:false};state.nodes.push(n);state.selected={kind:"node",id:n.id};render();setStatus("Person added")};
+$("connectBtn").onclick=()=>{
+ state.connectMode=!state.connectMode;currentConnectFrom=null;
+ $("connectBtn").classList.toggle("primary",state.connectMode);
+ setStatus(state.connectMode?"Connection mode: click first person":"Connection mode off");
+};
+$("arrangeBtn").onclick=()=>autoArrange();
+$("animateBtn").onclick=()=>animateAll();
+let backgroundMode="color";
+
+function updateBackground(){
+  const canvas=$("canvasBg");
+  const layer=$("bgPhotoLayer");
+  const color=$("bgColor").value || "#10131a";
+  const opacity=Math.max(0,Math.min(100,Number($("bgOpacity").value)||0));
+  const fit=$("bgFit").value || "cover";
+  const position=$("bgPosition").value || "center";
+
+  state.bgColor=color;
+  state.bgOpacity=opacity;
+  state.bgFit=fit;
+  state.bgPosition=position;
+
+  canvas.style.backgroundColor=color;
+  canvas.style.backgroundImage="none";
+
+  const hasPhoto=!!state.bgPhoto;
+  const showPhoto=backgroundMode==="image" && hasPhoto;
+
+  layer.style.display=showPhoto?"block":"none";
+  layer.style.opacity=String(opacity/100);
+  layer.style.backgroundImage=showPhoto ? `url("${state.bgPhoto}")` : "none";
+  layer.style.backgroundRepeat="no-repeat";
+  layer.style.backgroundSize=fit==="stretch" ? "100% 100%" : fit;
+  layer.style.backgroundPosition=position;
+
+  $("bgColorControls").style.display=backgroundMode==="color"?"block":"none";
+  $("bgImageControls").style.display=backgroundMode==="image"?"block":"none";
+  $("bgColorMode").classList.toggle("primary",backgroundMode==="color");
+  $("bgImageMode").classList.toggle("primary",backgroundMode==="image");
+  $("bgOpacityVal").textContent=opacity+"%";
+}
+
+$("bgColorMode").addEventListener("click",e=>{
+  e.preventDefault();
+  e.stopPropagation();
+  backgroundMode="color";
+  state.bgMode=backgroundMode;
+  updateBackground();
+  setStatus("Canvas background color mode");
+});
+
+$("bgImageMode").addEventListener("click",e=>{
+  e.preventDefault();
+  e.stopPropagation();
+  backgroundMode="image";
+  state.bgMode=backgroundMode;
+  updateBackground();
+  setStatus(state.bgPhoto ? "Canvas background image mode" : "Image mode — upload a background photo");
+});
+
+$("bgColor").addEventListener("input",()=>{
+  backgroundMode="color";
+  state.bgMode=backgroundMode;
+  updateBackground();
+});
+
+$("bgOpacity").addEventListener("input",e=>{
+  $("bgOpacityVal").textContent=e.target.value+"%";
+  updateBackground();
+});
+
+$("bgFit").addEventListener("change",updateBackground);
+$("bgPosition").addEventListener("change",updateBackground);
+
+$("bgPhotoBtn").addEventListener("click",e=>{
+  e.preventDefault();
+  e.stopPropagation();
+  $("bgPhotoInput").click();
+});
+
+$("bgPhotoInput").addEventListener("change",e=>{
+  const f=e.target.files && e.target.files[0];
+  if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{
+    state.bgPhoto=r.result;
+    backgroundMode="image";
+    updateBackground();
+    setStatus("Background photo added");
+  };
+  r.readAsDataURL(f);
+});
+
+$("bgPhotoClear").addEventListener("click",e=>{
+  e.preventDefault();
+  e.stopPropagation();
+  state.bgPhoto=null;
+  backgroundMode="color";
+  $("bgPhotoInput").value="";
+  updateBackground();
+  setStatus("Background photo cleared");
+});
+
+function applyCanvasResolution(){
+ const ratio=String(state.aspect||$("aspect").value||"16:9");
+ const parts=ratio.split(":").map(Number);
+ const w=parts[0]||16, h=parts[1]||9;
+ const base=800;
+ $("stage").style.width=(w/h*base)+"px";
+ $("stage").style.height=base+"px";
+ $("aspect").value=ratio;
+ applyTransform();
+}
+$("aspect").onchange=e=>{
+ state.aspect=e.target.value;
+ applyCanvasResolution();
+};
+function autoArrange(){
+ const roots=state.nodes.filter(n=>!state.lines.some(l=>l.relationship==="parent"&&l.to===n.id));
+ const levels={};const walk=(id,lev)=>{levels[id]=Math.max(levels[id]||0,lev);state.lines.filter(l=>l.relationship==="parent"&&l.from===id).forEach(l=>walk(l.to,lev+1))};
+ roots.forEach(n=>walk(n.id,0));
+ const buckets={};state.nodes.forEach(n=>{const lev=levels[n.id]??0;(buckets[lev]??=[]).push(n)});
+ Object.keys(buckets).forEach(k=>{const arr=buckets[k], gap=35;arr.forEach((n,i)=>{n.x=80+i*(n.cardWidth+gap);n.y=80+Number(k)*240})});
+ render();setStatus("Tree arranged");
+}
+$("pName").oninput=e=>{nodeBy(state.selected.id).name=e.target.value;render()};
+$("pRole").oninput=e=>{nodeBy(state.selected.id).role=e.target.value;render()};
+$("frame").onchange=e=>{nodeBy(state.selected.id).frame=e.target.value;render()};
+$("frameColor").oninput=e=>{nodeBy(state.selected.id).frameColor=e.target.value;render()};
+$("frameThickness").oninput=e=>{nodeBy(state.selected.id).frameThickness=+e.target.value;render()};
+$("photoSize").oninput=e=>{nodeBy(state.selected.id).photoSize=+e.target.value;render()};
+$("cardWidth").oninput=e=>{nodeBy(state.selected.id).cardWidth=+e.target.value;render()};$("nodeHeight").oninput=e=>{nodeBy(state.selected.id).nodeHeight=+e.target.value;render()};
+$("nameColor").oninput=e=>{nodeBy(state.selected.id).nameColor=e.target.value;render()};
+$("nameSize").oninput=e=>{nodeBy(state.selected.id).nameSize=+e.target.value;render()};
+$("memberAnimationIndex").oninput=e=>{const n=nodeBy(state.selected.id);if(n){n.animationIndex=Math.max(1,parseInt(e.target.value)||1);setStatus("Member animation index set to "+n.animationIndex);}};
+$("deletePerson").onclick=()=>{const id=state.selected.id;state.nodes=state.nodes.filter(n=>n.id!==id);state.lines=state.lines.filter(l=>l.from!==id&&l.to!==id);state.selected=null;render()};
+$("photoBtn").onclick=()=>$("photoInput").click();
+$("photoInput").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{nodeBy(state.selected.id).photo=r.result;render()};r.readAsDataURL(f)};
+
+$("nodeHidePerson").onchange=e=>{
+  const n=nodeBy(state.selected.id);
+  if(!n)return;
+  n.hidden=!!e.target.checked;
+  n.hidePerson=!!e.target.checked;
+  render();
+  setStatus(e.target.checked?"Person hidden":"Person shown");
+};
+$("nodeBgColor").oninput=e=>{
+  const n=nodeBy(state.selected.id);
+  if(!n)return;
+  n.nodeBgColor=e.target.value;
+  render();
+};
+$("nodeBgOpacity").oninput=e=>{
+  const n=nodeBy(state.selected.id);
+  if(!n)return;
+  n.nodeBgOpacity=+e.target.value;
+  $("nodeBgOpacityVal").textContent=e.target.value+"%";
+  render();
+};
+$("nodeFrameColor").oninput=e=>{
+  const n=nodeBy(state.selected.id);
+  if(!n)return;
+  n.nodeFrameColor=e.target.value;
+  render();
+};
+$("nodeFrameOpacity").oninput=e=>{
+  const n=nodeBy(state.selected.id);
+  if(!n)return;
+  n.nodeFrameOpacity=+e.target.value;
+  $("nodeFrameOpacityVal").textContent=e.target.value+"%";
+  render();
+};
+$("nodeFrameThickness").oninput=e=>{
+  const n=nodeBy(state.selected.id);
+  if(!n)return;
+  n.nodeFrameThickness=+e.target.value;
+  $("nodeFrameThicknessVal").textContent=e.target.value+"px";
+  render();
+};
+
+
+$("roleOpacity").oninput=e=>{
+  const n=nodeBy(state.selected.id);
+  if(!n)return;
+  n.roleOpacity=+e.target.value;
+  $("roleOpacityVal").textContent=e.target.value+"%";
+  render();
+};
+$("roleColor").oninput=e=>{
+  const n=nodeBy(state.selected.id);
+  if(!n)return;
+  n.roleColor=e.target.value;
+  render();
+};
+$("roleSize").oninput=e=>{
+  const n=nodeBy(state.selected.id);
+  if(!n)return;
+  n.roleSize=+e.target.value;
+  $("roleSizeVal").textContent=e.target.value+"px";
+  render();
+};
+
+$("nameOpacity").oninput=e=>{
+  const n=nodeBy(state.selected.id);
+  if(!n)return;
+  n.nameOpacity=+e.target.value;
+  $("nameOpacityVal").textContent=e.target.value+"%";
+  render();
+};
+$("photoOpacity").oninput=e=>{
+  const n=nodeBy(state.selected.id);
+  if(!n)return;
+  n.photoOpacity=+e.target.value;
+  $("photoOpacityVal").textContent=e.target.value+"%";
+  render();
+};
+
+$("nodeShadowOpacity").oninput=e=>{
+  const n=nodeBy(state.selected.id);
+  if(!n)return;
+  n.nodeShadowOpacity=+e.target.value;
+  $("nodeShadowOpacityVal").textContent=e.target.value+"%";
+  render();
+};
+$("linePicker").onchange=e=>{state.selected={kind:"line",id:e.target.value};render()};
+$("fromSide").onchange=e=>{lineBy(state.selected.id).fromSide=e.target.value;render()};
+$("toSide").onchange=e=>{lineBy(state.selected.id).toSide=e.target.value;render()};
+$("relationshipType").onchange=e=>{lineBy(state.selected.id).relationship=e.target.value;render()};$("lineType").onchange=e=>{lineBy(state.selected.id).type=e.target.value;render()};$("curveStrength").oninput=e=>{lineBy(state.selected.id).curveStrength=+e.target.value;render()};
+$("lineColor").oninput=e=>{lineBy(state.selected.id).color=e.target.value;render()};
+$("lineWidth").oninput=e=>{lineBy(state.selected.id).width=+e.target.value;render()};
+$("lineHeight").oninput=e=>{lineBy(state.selected.id).height=+e.target.value;render()};
+$("lineSpeed").oninput=e=>{lineBy(state.selected.id).speed=+e.target.value;render()};
+$("lineAnimationIndex").oninput=e=>{const l=lineBy(state.selected.id);if(l){l.animationIndex=Math.max(1,parseInt(e.target.value)||1);setStatus("Line animation index set to "+l.animationIndex);}};
+$("deleteLine").onclick=()=>{state.lines=state.lines.filter(l=>l.id!==state.selected.id);state.selected=null;render()};
+$("selectLineBtn").onclick=()=>{
+ const idx=state.lines.findIndex(l=>l.id===state.selected?.id);
+ if(!state.lines.length)return;
+ const next=state.lines[(idx+1+state.lines.length)%state.lines.length];
+ state.selected={kind:"line",id:next.id};render();setStatus("Selected next connection");
+};
+$("animateLine").onclick=()=>{const l=lineBy(state.selected.id);animateLine(l)};
+function getAnimatedPath(l){
+  if(!l) return null;
+  return [...$("lines").querySelectorAll("path.connection")].find(p=>p.dataset.id===l.id) || null;
+}
+function stopPathAnimation(path){
+  if(path && path._animFrame){cancelAnimationFrame(path._animFrame);path._animFrame=null;}
+}
+function spouseDashArray(visibleLen,totalLen){
+  const dash=9, gap=6;
+  const v=Math.max(0,Math.min(totalLen,visibleLen));
+  if(v<=0)return `0 ${Math.max(0,totalLen)}`;
+  const parts=[];
+  let used=0;
+  let drawing=true;
+  while(used<v-0.001){
+    const step=drawing?dash:gap;
+    const take=Math.min(step,v-used);
+    parts.push(String(take));
+    used+=take;
+    if(take<step-0.001) break;
+    drawing=!drawing;
+  }
+  const hidden=Math.max(0,totalLen-used);
+  parts.push(String(hidden));
+  return parts.join(" ");
+}
+function animateLine(l){
+  const path=getAnimatedPath(l);
+  if(!path){setStatus("Line path not found");return Promise.resolve();}
+  stopPathAnimation(path);
+  const len=path.getTotalLength();
+  const duration=1000/Math.max(.1,Number(l.speed)||1);
+  const isSpouse=(l.relationship||"").toLowerCase()==="spouse";
+  path.style.opacity="1";
+  if(!isSpouse){
+    path.style.strokeDasharray=String(len);
+    path.style.strokeDashoffset=String(len);
+  }else{
+    // Spouse connections stay dotted throughout the animation.
+    // Use the native dash pattern and reveal it with a clip-path so the
+    // animation never changes the created line style into a solid line.
+    path.style.strokeDasharray="9 6";
+    path.style.strokeDashoffset="0";
+    path.style.clipPath="inset(0 100% 0 0)";
+    path.style.webkitClipPath="inset(0 100% 0 0)";
+  }
+  const start=performance.now();
+  return new Promise(resolve=>{
+    const step=now=>{
+      const t=Math.min(1,(now-start)/duration);
+      const eased=t<.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2;
+      const progress=len*eased;
+      if(isSpouse){
+        // Reveal the already-dotted spouse line without changing its dash pattern.
+        const reveal=Math.max(0,Math.min(100,100*(progress/len)));
+        path.style.clipPath=`inset(0 ${100-reveal}% 0 0)`;
+        path.style.webkitClipPath=`inset(0 ${100-reveal}% 0 0)`;
+        path.style.strokeDasharray="9 6";
+        path.style.strokeDashoffset="0";
+      }else{
+        path.style.strokeDashoffset=String(len-progress);
+      }
+      if(t<1){
+        path._animFrame=requestAnimationFrame(step);
+      }else{
+        path._animFrame=null;
+        if(isSpouse){
+          path.style.strokeDasharray="9 6";
+          path.style.strokeDashoffset="0";
+          path.style.clipPath="none";
+          path.style.webkitClipPath="none";
+        }else{
+          path.style.strokeDashoffset="0";
+          path.style.strokeDasharray="none";
+        }
+        resolve();
+      }
+    };
+    path._animFrame=requestAnimationFrame(step);
+  });
+}
+let mainAnimationRun=0;
+function wait(ms){return new Promise(r=>setTimeout(r,ms))}
+function resetAnimationVisuals(){
+  document.querySelectorAll("#nodes .node").forEach(n=>{n.style.opacity="0"});
+  document.querySelectorAll("#lines path.connection").forEach(p=>{
+    stopPathAnimation(p);
+    p.style.opacity="0";
+    const l=lineBy(p.dataset.id);
+    const isSpouse=l && (l.relationship||"").toLowerCase()==="spouse";
+    // Keep the line's original visual style even while it is hidden for animation.
+    p.style.strokeDasharray=isSpouse ? "9 6" : "none";
+    p.style.strokeDashoffset="0";
+  });
+}
+async function animateAll(){
+  const run=++mainAnimationRun;
+  if(!state.nodes.length){setStatus("Nothing to animate");return;}
+
+  /* Background photo: default -> 20% lower -> 20% higher -> default,
+     continuously and smoothly for the duration of Animate All. */
+  const bgLayer=$("bgPhotoLayer");
+  const bgDefault=Math.max(0,Math.min(100,Number($("bgOpacity").value)||0));
+  let bgFadeRunning=true;
+  const bgFadeStart=performance.now();
+  const bgFadeDuration=1000;
+  const animateBgFade=(now)=>{
+    if(!bgFadeRunning || run!==mainAnimationRun)return;
+    const phase=((now-bgFadeStart)%(bgFadeDuration*2))/(bgFadeDuration*2);
+    const wave=(1-Math.cos(phase*Math.PI*2))/2;
+    const value=Math.max(0,Math.min(100,bgDefault-20+40*wave));
+    bgLayer.style.opacity=String(value/100);
+    requestAnimationFrame(animateBgFade);
+  };
+  requestAnimationFrame(animateBgFade);
+
+  render();
+  resetAnimationVisuals();
+
+  const events=[];
+  const nodeIndex={};
+  state.nodes.forEach(n=>{
+    const idx=parseInt(n.animationIndex,10);
+    const safe=Number.isFinite(idx)&&idx>0?idx:1;
+    nodeIndex[n.id]=safe;
+    events.push({index:safe,kind:"node",id:n.id});
+  });
+
+  /* Relationship-aware line ordering:
+     A connection is allowed to draw only after its connected people have
+     appeared. The user's explicit line animation index is still respected,
+     but a line's effective index cannot be earlier than its endpoints.
+     This prevents a parent->child/spouse/sibling line from appearing before
+     the people it visually connects. */
+  state.lines.forEach(l=>{
+    const requested=parseInt(l.animationIndex,10);
+    const safe=Number.isFinite(requested)&&requested>0?requested:1;
+    const fromIndex=nodeIndex[l.from]??1;
+    const toIndex=nodeIndex[l.to]??1;
+    const relationship=l.relationship||"parent";
+    const effective=Math.max(safe,fromIndex,toIndex);
+    events.push({
+      index:effective,
+      kind:"line",
+      id:l.id,
+      requestedIndex:safe,
+      relationship,
+      from:l.from,
+      to:l.to
+    });
+  });
+
+  const indexes=[...new Set(events.map(e=>e.index))].sort((a,b)=>a-b);
+  setStatus("Playing animation indexes: "+indexes.join(" → "));
+
+  for(const index of indexes){
+    if(run!==mainAnimationRun){
+      bgFadeRunning=false;
+      bgLayer.style.opacity=String(bgDefault/100);
+      return;
+    }
+
+    const group=events.filter(e=>e.index===index);
+
+    /* People at this index appear together. */
+    group.filter(e=>e.kind==="node").forEach(e=>{
+      const el=document.querySelector(`#nodes .node[data-id="${e.id}"]`);
+      if(el)el.style.opacity="1";
+    });
+
+    /* Lines draw only after both connected members are visible.
+       Multiple lines sharing the same effective index draw together. */
+    const readyLines=group
+      .filter(e=>e.kind==="line")
+      .filter(e=>{
+        const fromEl=document.querySelector(`#nodes .node[data-id="${e.from}"]`);
+        const toEl=document.querySelector(`#nodes .node[data-id="${e.to}"]`);
+        return !!fromEl && !!toEl &&
+          getComputedStyle(fromEl).opacity!=="0" &&
+          getComputedStyle(toEl).opacity!=="0";
+      });
+
+    const linePromises=readyLines
+      .map(e=>lineBy(e.id))
+      .filter(Boolean)
+      .map(l=>animateLine(l));
+
+    await Promise.all(linePromises);
+    if(run!==mainAnimationRun){
+      bgFadeRunning=false;
+      bgLayer.style.opacity=String(bgDefault/100);
+      return;
+    }
+    await wait(120);
+  }
+
+  if(run!==mainAnimationRun){
+    bgFadeRunning=false;
+    bgLayer.style.opacity=String(bgDefault/100);
+    return;
+  }
+
+  state.nodes.forEach(n=>{
+    const el=document.querySelector(`#nodes .node[data-id="${n.id}"]`);
+    if(el)el.style.opacity="1";
+  });
+  state.lines.forEach(l=>{
+    const path=getAnimatedPath(l);
+    if(path){
+      path.style.opacity="1";
+      const isSpouse=(l.relationship||"").toLowerCase()==="spouse";
+      path.style.strokeDasharray=isSpouse ? "9 6" : "none";
+      path.style.strokeDashoffset="0";
+      path.style.clipPath="none";
+      path.style.webkitClipPath="none";
+    }
+  });
+
+  bgFadeRunning=false;
+  bgLayer.style.opacity=String(bgDefault/100);
+  setStatus("Animation complete — relationship-aware indexes followed");
+}
+$("zoomIn").onclick=()=>{state.zoom=Math.min(2.5,state.zoom*1.15);applyTransform()};
+$("zoomOut").onclick=()=>{state.zoom=Math.max(.25,state.zoom/1.15);applyTransform()};
+$("zoomReset").onclick=()=>{state.zoom=1;state.panX=40;state.panY=40;applyTransform()};
+$("viewport").addEventListener("wheel",e=>{e.preventDefault();state.zoom=Math.max(.25,Math.min(2.5,state.zoom*(e.deltaY<0?1.1:.9)));applyTransform()},{passive:false});
+$("viewport").addEventListener("mousedown",e=>{if(e.button===1||e.button===0&&e.target===$("viewport")||e.target===$("canvasBg")){panning=true;$("viewport").classList.add("grabbing");panSX=e.clientX;panSY=e.clientY;startPX=state.panX;startPY=state.panY}});
+window.addEventListener("mousemove",e=>{
+ if(dragging){const n=nodeBy(dragging);const vr=$("viewport").getBoundingClientRect();n.x=(e.clientX-vr.left-state.panX)/state.zoom-dragDX;n.y=(e.clientY-vr.top-state.panY)/state.zoom-dragDY;render()}
+ if(panning){state.panX=startPX+e.clientX-panSX;state.panY=startPY+e.clientY-panSY;applyTransform()}
+});
+window.addEventListener("mouseup",()=>{dragging=null;panning=false;$("viewport").classList.remove("grabbing")});
+window.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){state.connectMode=false;currentConnectFrom=null;setStatus("Cancelled")}
+ if(e.key==="Delete"&&state.selected){if(state.selected.kind==="node")$("deletePerson").click();else $("deleteLine").click()}
+ if(e.code==="Space"&&!e.repeat){e.preventDefault()}
+});
+$("saveBtn").onclick=()=>{
+  state.aspect=$("aspect").value;
+  state.bgColor=$("bgColor").value;
+  state.bgOpacity=Number($("bgOpacity").value);
+  state.bgFit=$("bgFit").value;
+  state.bgPosition=$("bgPosition").value;
+  const saveData={
+    ...state,
+    selected:null,
+    connectMode:false,
+    canvas:{
+      aspect:state.aspect,
+      width:$("stage").style.width,
+      height:$("stage").style.height,
+      bgColor:state.bgColor,
+      bgPhoto:state.bgPhoto,
+      bgOpacity:state.bgOpacity,
+      bgFit:state.bgFit,
+      bgPosition:state.bgPosition,bgMode:backgroundMode
+    }
+  };
+  const blob=new Blob([JSON.stringify(saveData,null,2)],{type:"application/json"});
+  downloadBlob(blob,"family-tree.json");
+  setStatus("Saved JSON");
+};
+$("loadBtn").onclick=()=>$("fileInput").click();
+$("fileInput").onchange=e=>{
+ const f=e.target.files[0];
+ if(!f)return;
+ const r=new FileReader();
+ r.onload=()=>{
+  try{
+    const d=JSON.parse(r.result);
+    const canvas=d.canvas||{};
+
+    state.nodes=(d.nodes||[]).map(n=>({
+      ...n,
+      nodeHeight:n.nodeHeight??160,
+      animationIndex:Math.max(1,parseInt(n.animationIndex)||1),
+      nodeFrameColor:n.nodeFrameColor||"#c7a45c",
+      nodeFrameOpacity:n.nodeFrameOpacity??100,
+      nodeFrameThickness:n.nodeFrameThickness??2,
+      nodeBgColor:n.nodeBgColor||"#1c2028",
+      nodeBgOpacity:n.nodeBgOpacity??100
+    }));
+    state.lines=(d.lines||[]).map(l=>({
+      ...l,
+      relationship:l.relationship||((l.type==="spouse")?"spouse":"parent"),
+      type:["linear","bezier","elbow","curved"].includes(l.type)?l.type:"bezier",
+      curveStrength:l.curveStrength??60,
+      height:l.height??60,
+      speed:l.speed??1,
+      animationIndex:Math.max(1,parseInt(l.animationIndex)||1),
+      fromSide:l.fromSide||"bottom",
+      toSide:l.toSide||"top"
+    }));
+
+    state.nextId=d.nextId||state.nodes.length+1;
+    state.selected=null;
+    state.connectMode=false;
+
+    state.aspect=canvas.aspect||d.aspect||"16:9";
+    state.bgColor=canvas.bgColor||d.bgColor||"#10131a";
+    state.bgPhoto=canvas.bgPhoto||d.bgPhoto||null;
+    state.bgOpacity=canvas.bgOpacity??d.bgOpacity??35;
+    state.bgFit=canvas.bgFit||d.bgFit||"cover";
+    state.bgPosition=canvas.bgPosition||d.bgPosition||"center";
+
+    $("bgColor").value=state.bgColor;
+    $("bgOpacity").value=state.bgOpacity;
+    $("bgOpacityVal").textContent=state.bgOpacity+"%";
+    $("bgFit").value=state.bgFit;
+    $("bgPosition").value=state.bgPosition;
+
+    backgroundMode=state.bgPhoto?"image":"color";
+    applyCanvasResolution();
+    updateBackground();
+    render();
+    setStatus("Loaded JSON + canvas resolution");
+  }catch(err){
+    console.error(err);
+    alert("Invalid family-tree JSON");
+  }
+ };
+ r.readAsText(f);
+};
+function downloadBlob(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+$("exportBtn").onclick=()=>{
+  try{
+    const stage=$("stage").cloneNode(true);
+    stage.style.transform="none";
+    stage.style.transformOrigin="0 0";
+
+    // Make node shadows render consistently during SVG -> PNG rasterization.
+    // Browser foreignObject rendering can clip/soften box-shadow differently
+    // from the live HTML. Convert each node's configured shadow to an explicit
+    // drop-shadow filter for the export only, while leaving the editor unchanged.
+    stage.querySelectorAll(".node").forEach(nd=>{
+      const id=nd.dataset.id;
+      const n=state.nodes.find(x=>x.id===id);
+      const opacity=n && n.nodeShadowOpacity!=null ? Number(n.nodeShadowOpacity) : 100;
+      const a=Math.max(0,Math.min(100,opacity))/100;
+      nd.style.boxShadow="none";
+      nd.style.filter=a<=0 ? "none" : `drop-shadow(0 8px 22px rgba(0,0,0,${a}))`;
+    });
+
+    const css=[...document.querySelectorAll("style")].map(s=>s.textContent).join("\n");
+    const stageHtml=new XMLSerializer().serializeToString(stage);
+
+    // Use an encoded data URL instead of a Blob URL. This is important when
+    // the app is opened directly as a local .html file: some browsers block
+    // foreignObject content inside a Blob-backed SVG from being rasterized.
+    const data=`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="1000" viewBox="0 0 1600 1000"><foreignObject x="0" y="0" width="1600" height="1000"><div xmlns="http://www.w3.org/1999/xhtml"><style>${css}</style>${stageHtml}</div></foreignObject></svg>`;
+
+    const svgUrl="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(data);
+    const img=new Image();
+
+    img.onload=()=>{
+      const canvas=document.createElement("canvas");
+      canvas.width=3200;
+      canvas.height=2000;
+      const ctx=canvas.getContext("2d");
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.drawImage(img,0,0,canvas.width,canvas.height);
+
+      canvas.toBlob(png=>{
+        if(!png){alert("PNG export failed.");return;}
+        downloadBlob(png,"family-tree.png");
+        setStatus("Exported PNG");
+      },"image/png");
+    };
+
+    img.onerror=()=>{
+      alert("PNG export failed. Please use Chrome/Edge and try again.");
+    };
+
+    img.src=svgUrl;
+  }catch(err){
+    console.error(err);
+    alert("PNG export failed.");
+  }
+};
+applyCanvasResolution();
+updateBackground();
+$("demoBtn").onclick=()=>{
+ state.nodes=[];state.lines=[];state.nextId=1;
+ const g={id:uid(),name:"Grandfather",role:"",x:500,y:80,photo:null,frame:"circle",frameColor:"#d7b56d",frameThickness:6,photoSize:105,cardWidth:170,nodeHeight:190,nameColor:"#fff",nameSize:17,animationIndex:1};
+ const gm={id:uid(),name:"Grandmother",role:"",x:750,y:80,photo:null,frame:"circle",frameColor:"#d7b56d",frameThickness:6,photoSize:105,cardWidth:170,nodeHeight:190,nameColor:"#fff",nameSize:17,animationIndex:3};
+ const f={id:uid(),name:"Father",role:"",x:620,y:350,photo:null,frame:"rounded",frameColor:"#7eb5ff",frameThickness:5,photoSize:100,cardWidth:160,nodeHeight:185,nameColor:"#fff",nameSize:16,animationIndex:5};
+ const m={id:uid(),name:"Mother",role:"",x:850,y:350,photo:null,frame:"rounded",frameColor:"#ff91c8",frameThickness:5,photoSize:100,cardWidth:160,nodeHeight:185,nameColor:"#fff",nameSize:16,animationIndex:3};
+ const c1={id:uid(),name:"Child 1",role:"",x:500,y:640,photo:null,frame:"hex",frameColor:"#8bd8a8",frameThickness:4,photoSize:95,cardWidth:150,nodeHeight:175,nameColor:"#fff",nameSize:15,animationIndex:7};
+ const c2={id:uid(),name:"Child 2",role:"",x:720,y:640,photo:null,frame:"hex",frameColor:"#8bd8a8",frameThickness:4,photoSize:95,cardWidth:150,nodeHeight:175,nameColor:"#fff",nameSize:15,animationIndex:7};
+ state.nodes=[g,gm,f,m,c1,c2];
+ state.lines=[
+  {id:"l1",from:g.id,to:f.id,relationship:"parent",type:"bezier",color:"#d7b56d",width:5,height:60,speed:1,animationIndex:2},
+  {id:"l2",from:gm.id,to:f.id,relationship:"parent",type:"bezier",color:"#d7b56d",width:5,height:60,speed:1,animationIndex:4},
+  {id:"l3",from:f.id,to:m.id,relationship:"spouse",type:"linear",color:"#ff91c8",width:4,height:0,speed:1,animationIndex:4},
+  {id:"l4",from:f.id,to:c1.id,relationship:"parent",type:"bezier",color:"#8bd8a8",width:5,height:70,speed:1,animationIndex:6},
+  {id:"l5",from:f.id,to:c2.id,relationship:"parent",type:"bezier",color:"#8bd8a8",width:5,height:70,speed:1,animationIndex:6}
+ ];state.selected=null;render();setStatus("Demo family created")
+};
+render();applyTransform();updateBackground();
+</script>
+<script id="inspector-customization-final-v10">
+(function(){
+  function nodeList(){
+    try{
+      return (typeof state!=="undefined" && Array.isArray(state.nodes)) ? state.nodes : [];
+    }catch(e){ return []; }
+  }
+
+  function selected(){
+    try{
+      if(typeof state!=="undefined" && state.selected && state.selected.kind==="node"){
+        var n=nodeList().find(function(x){return String(x.id)===String(state.selected.id);});
+        if(n)return n;
+      }
+    }catch(e){}
+    return null;
+  }
+
+  function refreshHiddenPeople(){
+    var box=document.getElementById("hiddenPeopleList");
+    var empty=document.getElementById("noHiddenPeople");
+    if(!box)return;
+
+    box.innerHTML="";
+    var hidden=nodeList().filter(function(n){
+      return !!(n.hidden || n.hidePerson);
+    });
+
+    if(empty) empty.style.display=hidden.length ? "none" : "block";
+
+    hidden.forEach(function(n){
+      var row=document.createElement("div");
+      row.style.cssText="display:flex;align-items:center;gap:7px;margin:3px 0;";
+
+      var btn=document.createElement("button");
+      btn.type="button";
+      btn.textContent="Show";
+      btn.style.cssText="padding:5px 9px;cursor:pointer;flex:none;";
+      btn.addEventListener("click",function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Re-enable this exact hidden node.
+        n.hidden=false;
+        n.hidePerson=false;
+
+        // Select it so the Inspector immediately shows its settings.
+        if(typeof state!=="undefined"){
+          state.selected={kind:"node",id:n.id};
+        }
+
+        if(typeof render==="function") render();
+
+        setTimeout(function(){
+          refreshHiddenPeople();
+          syncControls();
+        },50);
+
+        if(typeof setStatus==="function"){
+          setStatus((n.name||"Person")+" is visible again");
+        }
+      });
+
+      var name=document.createElement("span");
+      name.textContent=n.name||"Unnamed Person";
+      name.style.cssText="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;";
+
+      row.appendChild(btn);
+      row.appendChild(name);
+      box.appendChild(row);
+    });
+  }
+
+  function syncControls(){
+    var n=selected();
+    var cb=document.getElementById("nodeHidePerson");
+    if(cb) cb.checked=!!(n && (n.hidden || n.hidePerson));
+    refreshHiddenPeople();
+  }
+
+  // Do not depend on selecting a hidden node on the canvas.
+  // The Show button above directly changes state.nodes.
+  window.__refreshHiddenPeople=refreshHiddenPeople;
+  window.__syncHiddenPeopleInspector=syncControls;
+
+  setTimeout(syncControls,100);
+  setInterval(syncControls,400);
+})();
+</script>
+<script id="duplicate-member-v11">
+(function(){
+  function cloneValue(v){
+    if(v===undefined)return v;
+    if(v===null)return null;
+    if(typeof v==="object"){
+      try{return JSON.parse(JSON.stringify(v));}catch(e){return v;}
+    }
+    return v;
+  }
+
+  function newId(){
+    if(typeof uid==="function"){
+      try{return uid("n");}catch(e){}
+    }
+    return "node_"+Date.now()+"_"+Math.random().toString(36).slice(2,8);
+  }
+
+  function duplicateSelectedMember(){
+    if(typeof state==="undefined" || !state.selected || state.selected.kind!=="node"){
+      if(typeof setStatus==="function")setStatus("Select a member first");
+      return;
+    }
+
+    var original=state.nodes.find(function(n){
+      return String(n.id)===String(state.selected.id);
+    });
+    if(!original){
+      if(typeof setStatus==="function")setStatus("Select a member first");
+      return;
+    }
+
+    // Clone every member property so photo, frame, background, dimensions,
+    // animation index, hidden state, etc. are preserved.
+    var copy={};
+    Object.keys(original).forEach(function(k){
+      copy[k]=cloneValue(original[k]);
+    });
+
+    copy.id=newId();
+
+    // Place the duplicate beside the original.
+    copy.x=Number(original.x||0)+40;
+    copy.y=Number(original.y||0)+40;
+
+    // Make it visible and clearly a separate member.
+    copy.hidden=false;
+    copy.hidePerson=false;
+
+    // Give the duplicate its own name.
+    var base=String(original.name||"Member");
+    var names=state.nodes.map(function(n){return String(n.name||"");});
+    var candidate=base+" Copy";
+    var i=2;
+    while(names.indexOf(candidate)!==-1){
+      candidate=base+" Copy "+i++;
+    }
+    copy.name=candidate;
+
+    // IMPORTANT: no relationship/line is duplicated.
+    // Existing connections continue to point to the original member.
+    state.nodes.push(copy);
+    state.selected={kind:"node",id:copy.id};
+
+    if(typeof render==="function")render();
+    if(typeof setStatus==="function")setStatus("Duplicated "+base+" as "+copy.name);
+
+    // Sync inspector controls to the new duplicate.
+    setTimeout(function(){
+      try{if(typeof updateInspector==="function")updateInspector();}catch(e){}
+    },30);
+  }
+
+  function install(){
+    var b=document.getElementById("duplicatePerson");
+    if(!b)return;
+    b.addEventListener("click",function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      duplicateSelectedMember();
+    });
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",install);
+  }else{
+    install();
+  }
+})();
+</script>
+<script id="opacity-scale-migration-v14">
+(function(){
+  try{
+    if(typeof state!=="undefined" && Array.isArray(state.nodes)){
+      state.nodes.forEach(function(n){
+        if(n.nodeBgOpacity!=null && Number(n.nodeBgOpacity)>0 && Number(n.nodeBgOpacity)<=1)
+          n.nodeBgOpacity=Number(n.nodeBgOpacity)*100;
+        if(n.nodeFrameOpacity!=null && Number(n.nodeFrameOpacity)>0 && Number(n.nodeFrameOpacity)<=1)
+          n.nodeFrameOpacity=Number(n.nodeFrameOpacity)*100;
+      });
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
